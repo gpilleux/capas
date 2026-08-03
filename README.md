@@ -5,6 +5,10 @@
 </p>
 
 <p align="center">
+  <a href="https://gpilleux.github.io/capas/"><strong>Leer el curso →</strong></a>
+</p>
+
+<p align="center">
   <a href="#las-lecciones">Lecciones</a> ·
   <a href="#referencia">Referencia</a> ·
   <a href="#cómo-leerlo">Cómo leerlo</a> ·
@@ -33,7 +37,7 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 
 | # | Lección | De qué trata |
 |---|---------|--------------|
-| 1 | [Una boquilla, cuatro colores](lessons/0001-una-boquilla-cuatro-colores.html) | Por qué una impresora "multicolor" no imprime varios colores a la vez, qué cuesta cada cambio de color, y qué compras realmente cuando compras un AMS. |
+| 1 | [Una boquilla, cuatro colores](https://gpilleux.github.io/capas/lessons/0001-una-boquilla-cuatro-colores.html) | Por qué una impresora "multicolor" no imprime varios colores a la vez, qué cuesta cada cambio de color, y qué compras realmente cuando compras un AMS. |
 
 > Van saliendo de a poco. Cada una asume la anterior.
 
@@ -41,11 +45,13 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 
 | Documento | Para qué |
 |-----------|----------|
-| [Glosario](reference/glosario.html) | ~28 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
+| [Glosario](https://gpilleux.github.io/capas/reference/glosario.html) | ~28 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
 
 ## Cómo leerlo
 
-Las lecciones son HTML autocontenido, sin dependencias externas. Clónalo y ábrelas:
+La forma directa es [**gpilleux.github.io/capas**](https://gpilleux.github.io/capas/).
+
+También son HTML autocontenido, sin dependencias externas, así que funcionan sin conexión:
 
 ```bash
 git clone https://github.com/gpilleux/capas.git
