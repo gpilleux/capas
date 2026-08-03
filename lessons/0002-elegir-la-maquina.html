@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 2 — Elegir la máquina</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 2 · Decisión de compra</p>
+<h1>Elegir la máquina</h1>
+<p class="dek">"¿Cuál compro?" es una pregunta mal planteada. Son cuatro preguntas independientes, y solo una de ellas depende de la marca.</p>
+<p class="meta-line">
+  ~12 minutos · Viene de <a href="0001-una-boquilla-cuatro-colores.html">Lección 1</a> · Glosario: <a href="../reference/glosario.html">reference/glosario.html</a>
+</p>
+
+<p>Comprar una impresora se siente como elegir entre modelos. No lo es. Cada modelo es un paquete de cuatro decisiones que se pueden separar, y separarlas es lo que convierte "mi amiga dice que esta es buena" en un argumento propio.</p>
+
+<p>Las cuatro preguntas, en orden de cuánto plata mueven:</p>
+
+<h2>1. ¿Cerrada o abierta?</h2>
+
+<p>Una <strong>cámara cerrada</strong> es una caja alrededor de la máquina. Retiene calor, y eso importa por una razón concreta: el ABS y el ASA se contraen al enfriarse. Si se enfrían disparejo —una corriente de aire, una ventana abierta— la pieza se agrieta entre capas o se despega de la cama.</p>
+
+<p>El punto que casi nadie dice en voz alta: <strong>el PLA y el PETG no necesitan cámara cerrada</strong>. Se imprimen perfecto al aire libre. Como lo explica <a href="https://layerdepth.com/learn/corexy-vs-bed-slinger/">LayerDepth</a>: si solo imprimes PLA, una máquina abierta funciona bien; si vas a imprimir ABS o ASA, la cámara deja de ser un lujo y pasa a ser el requisito.</p>
+
+<p class="sidenote">La cámara tiene un segundo efecto que sí aplica a cualquier material: contiene ruido y olor. Si la impresora va a vivir en el living en vez de un taller, eso pesa.</p>
+
+<h2>2. ¿CoreXY o bed-slinger?</h2>
+
+<p>Es cómo se mueve la máquina, y define su techo de velocidad.</p>
+
+<p>Un <strong>bed-slinger</strong> mueve la cama hacia adelante y atrás; la pieza viaja con ella. Una torre alta y delgada se bambolea más a medida que crece, y eso limita cuánto puedes acelerar.</p>
+
+<p>Un <strong>CoreXY</strong> deja la cama quieta en el plano horizontal —solo baja— y mueve el cabezal con dos correas cruzadas. La pieza nunca se sacude. Por eso el P2S puede llegar a 600 mm/s con aceleraciones de 20.000 mm/s² <a href="https://www.additive-x.com/blog/bambu-lab-p2s-combo-review">(specs verificadas)</a>.</p>
+
+<div class="callout">
+  <span class="label">Cómo se traduce a su caso</span>
+  <p style="margin-bottom:0">Un cuadro es plano y ancho: casi no tiene altura. Es justo la geometría donde la ventaja del CoreXY se nota menos. Para figuras altas o piezas técnicas, se nota mucho.</p>
+</div>
+
+<h2>3. ¿Qué AMS trae?</h2>
+
+<p>Aquí está la diferencia menos visible y más subestimada. Los tres sistemas cargan cuatro carretes; se diferencian en cómo los protegen <a href="https://filamino.com/blog/bambu-lab-ams-guide-how-multi-color-printing-works-and-which-ams-to-choose">(guía comparativa de AMS)</a>:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Sistema</th><th>Viene con</th><th>Protección del filamento</th></tr>
+  <tr><td><b>AMS Lite</b></td><td>A1 · A1 mini</td><td>Marco abierto. Sin sello, sin desecante, sin sensor de humedad. Los carretes respiran el aire de la pieza.</td></tr>
+  <tr><td><b>AMS</b> (original)</td><td>P1S · X1C</td><td>Caja sellada con desecante. Protege, pero no seca: el desecante se satura y hay que regenerarlo.</td></tr>
+  <tr><td><b>AMS 2 Pro</b></td><td>P2S</td><td>Secado <b>activo</b> hasta 65 °C con venteo. Además alimenta 60% más rápido.</td></tr>
+</table>
+</div>
+
+<p>¿Por qué importa? El plástico absorbe humedad del aire. Filamento húmedo imprime con burbujas, superficie opaca y capas que se despegan. Si imprimen seguido y rotan carretes, da lo mismo. Si dejan cuatro colores cargados tres semanas entre proyecto y proyecto, el AMS Lite los va a deteriorar y el AMS 2 Pro no.</p>
+
+<h2>4. ¿Cuánta cama necesitan?</h2>
+
+<p>La A1 mini imprime hasta 180 mm por lado. Todas las demás de esta lista, 256 mm. Para cuadros, esa diferencia decide si un trabajo sale de una pieza o hay que partirlo y pegarlo.</p>
+
+<h2>Los números reales, en pesos</h2>
+
+<p>Precios verificados en <a href="https://www.todotoner.cl/">TodoToner</a> el 2 de agosto de 2026. Son los combos, es decir con su AMS incluido:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Combo</th><th>Precio</th><th>Cerrada</th><th>Movimiento</th><th>AMS</th><th>Cama</th></tr>
+  <tr><td>A1 mini</td><td>$399.990</td><td>No</td><td>Bed-slinger</td><td>Lite</td><td>180 mm</td></tr>
+  <tr><td>A1</td><td>$519.990</td><td>No</td><td>Bed-slinger</td><td>Lite</td><td>256 mm</td></tr>
+  <tr><td>P1S</td><td>$919.990</td><td>Sí</td><td>CoreXY</td><td>Original</td><td>256 mm</td></tr>
+  <tr><td><b>P2S</b></td><td><b>$1.139.990</b></td><td>Sí</td><td>CoreXY</td><td>2 Pro</td><td>256 mm</td></tr>
+  <tr><td>H2D</td><td>$2.299.990</td><td>Sí</td><td>CoreXY</td><td>2 Pro</td><td>otra liga</td></tr>
+</table>
+</div>
+
+<h2>Decide tú</h2>
+
+<p>Responde según lo que <em>realmente</em> van a hacer, no según lo que sería lindo poder hacer algún día. El widget filtra por requisitos y recomienda la más barata que los cumple.</p>
+
+<div data-decision></div>
+
+<h2>El argumento incómodo</h2>
+
+<p>Si la respuesta honesta es "cuadros y cosas decorativas en PLA, en un espacio con puerta", el P2S está resolviendo problemas que ustedes no tienen. La A1 Combo hace cuadros multicolor de 256 mm con los mismos cuatro colores, por <strong>$620.000 menos</strong>.</p>
+
+<p>Y ahora el contraargumento, que también es real:</p>
+
+<ul>
+  <li><strong>El secado activo no es marketing.</strong> Es la única diferencia de esta lista que degrada resultados de forma invisible y progresiva. Si son de dejar carretes cargados por semanas, se paga solo en frustración.</li>
+  <li><strong>Ruido y olor.</strong> Una máquina abierta suena más. Si comparten espacio, importa.</li>
+  <li><strong>Techo de crecimiento.</strong> El día que quieran una pieza en ABS, la A1 no puede y el P2S sí. Nadie sabe hoy si ese día llega.</li>
+  <li><strong>El P2S es plataforma nueva</strong> (salió en octubre de 2025), mientras el P1S lleva desde fines de 2023 con todos sus problemas ya documentados por miles de usuarios. Novedad corta en ambos sentidos: mejor hardware, menos kilometraje.</li>
+</ul>
+
+<div class="callout">
+  <span class="label">Cómo llevar esto a la conversación</span>
+  <p style="margin-bottom:0">No es "tu elección está mala". Es: <em>"¿vamos a imprimir ABS alguna vez, y vamos a dejar carretes cargados semanas? Si la respuesta a las dos es no, hay $620.000 en juego. Si a alguna es sí, el P2S se justifica."</em> Esa pregunta la responden entre las dos — y es exactamente la conversación que hay que tener antes de pagar, no después.</p>
+</div>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://filamino.com/blog/bambu-lab-ams-guide-how-multi-color-printing-works-and-which-ams-to-choose">Filamino — <em>Bambu Lab AMS Guide: AMS vs AMS Lite vs AMS 2 Pro</em></a>. Es la comparación más clara de la diferencia que menos se entiende al comprar, y la que más afecta la calidad a mediano plazo.</p>
+  <p>Antes de decidir, vale la pena preguntar en <a href="https://reddit.com/r/BambuLab">r/BambuLab</a>: describe el caso de uso real (cuadros HueForge en PLA, dos personas, presupuesto X) y pide que te contradigan. Gente que ya tiene las dos máquinas responde en horas — eso es lo que ninguna tabla de specs te da.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>Anatomía del cuadro: cómo HueForge convierte una foto en capas de filamento, y por qué la elección de filamentos importa más que la imagen.</li>
+  </ul>
+
+  <h3>Términos nuevos de esta lección</h3>
+  <p><a href="../reference/glosario.html">Bed-slinger · AMS Lite · Secado activo · Volumen de impresión</a></p>
+
+  <div class="ask">
+    <b>Esta lección es una herramienta de negociación, no un veredicto.</b> Si tu amiga tiene un argumento que aquí no aparece, tráemelo y lo evaluamos en serio — puede que tenga razón y haya que corregir la lección.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/decision.js"></script>
+<script>
+  Decide.mount({
+    unit: "CLP",
+    reference: "P2S Combo",
+    options: [
+      { name: "A1 mini Combo", price: 399990, specs: { cerrada: false, cama: 180, secado: false, corexy: false } },
+      { name: "A1 Combo",      price: 519990, specs: { cerrada: false, cama: 256, secado: false, corexy: false } },
+      { name: "P1S Combo",     price: 919990, specs: { cerrada: true,  cama: 256, secado: false, corexy: true  } },
+      { name: "P2S Combo",     price: 1139990, specs: { cerrada: true, cama: 256, secado: true,  corexy: true  } }
+    ],
+    questions: [
+      { q: "¿Qué materiales van a usar de verdad?",
+        opts: [
+          { t: "Solo PLA y PETG: decorativo", req: {} },
+          { t: "También ABS o ASA técnicos", req: { cerrada: true } }
+        ] },
+      { q: "¿De qué tamaño son las piezas?",
+        opts: [
+          { t: "Hasta 18 cm por lado basta", req: { cama: 180 } },
+          { t: "Cuadros y piezas de 25 cm", req: { cama: 256 } }
+        ] },
+      { q: "¿Cómo van a tratar el filamento?",
+        opts: [
+          { t: "Imprimimos seguido, rota rápido", req: {} },
+          { t: "Queda cargado semanas sin uso", req: { secado: true } }
+        ] },
+      { q: "¿Dónde va a vivir la máquina?",
+        opts: [
+          { t: "Taller o pieza aparte, con puerta", req: {} },
+          { t: "Espacio compartido donde estamos", req: { cerrada: true } }
+        ] }
+    ],
+    explain: (w) =>
+      w.name === "P2S Combo"
+        ? "Tu caso de uso justifica el P2S por sí solo. La compra que evaluaban tiene fundamento — no era solo la recomendación de tu amiga."
+        : "Ojo: esto no dice que el P2S sea mala máquina, dice que para lo que describiste estarías pagando capacidades que no vas a usar. Si alguna respuesta fue optimista, cámbiala y mira cómo se mueve el resultado."
+  });
+
+  Quiz.mount(
+    {
+      q: "Repaso de la clase 1: ¿por qué un cuadro de cuatro colores gasta más filamento del que pesa?",
+      opts: [
+        { t: "Cada cambio de color purga plástico que se bota",
+          ok: true,
+          fb: "Entre 0,3 y 1,5 g por cambio. Con cientos de cambios, la purga puede superar el peso de la pieza misma." },
+        { t: "El relleno interno consume más de lo calculado",
+          ok: false,
+          fb: "El relleno es parte de la pieza y el slicer lo estima bien. El desperdicio invisible está en la purga." },
+        { t: "Las capas delgadas obligan a extruir material extra",
+          ok: false,
+          fb: "Capas más delgadas tardan más, pero no gastan más plástico: el volumen de la pieza es el mismo." }
+      ]
+    },
+    {
+      q: "¿Qué problema resuelve de verdad una cámara cerrada?",
+      opts: [
+        { t: "Que el ABS y el ASA se agrieten al enfriarse",
+          ok: true,
+          fb: "Retiene calor y evita corrientes de aire. Para PLA y PETG es innecesaria; para ABS y ASA es el requisito." },
+        { t: "Que el cabezal alcance velocidades más altas",
+          ok: false,
+          fb: "La velocidad la define el sistema de movimiento (CoreXY vs bed-slinger), no la caja que lo rodea." },
+        { t: "Que el AMS pueda cargar más colores a la vez",
+          ok: false,
+          fb: "La cantidad de colores depende del AMS y de cuántas unidades se encadenen. Son cosas independientes." }
+      ]
+    },
+    {
+      q: "¿Qué hace el AMS 2 Pro que el AMS Lite no hace?",
+      opts: [
+        { t: "Secar el filamento activamente hasta los 65 °C",
+          ok: true,
+          fb: "El Lite es marco abierto: sin sello ni desecante. Es la diferencia que más afecta la calidad a mediano plazo." },
+        { t: "Imprimir dos colores de manera simultánea",
+          ok: false,
+          fb: "Ningún AMS hace eso: una boquilla, colores en secuencia. Sigue siendo cierto en toda la línea." },
+        { t: "Cambiar de color sin desperdiciar material",
+          ok: false,
+          fb: "La purga es física del hotend. El 2 Pro cambia más rápido, pero purga igual que los demás." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

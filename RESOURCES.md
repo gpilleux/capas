@@ -19,6 +19,17 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
 - [Bambu Lab — página oficial del P2S](https://bambulab.com/en-us/p2s)
   Specs oficiales y precio de referencia. *Nota: bloquea scrapers, hay que abrirla en navegador.*
 
+### Elegir máquina
+
+- [Filamino — Bambu Lab AMS Guide: AMS vs AMS Lite vs AMS 2 Pro](https://filamino.com/blog/bambu-lab-ams-guide-how-multi-color-printing-works-and-which-ams-to-choose)
+  La diferencia entre los tres sistemas de carretes, que es la que menos se entiende al comprar. Usar para: decidir si el secado activo justifica el salto de precio.
+- [LayerDepth — CoreXY vs Bed-Slinger: Motion Systems Explained](https://layerdepth.com/learn/corexy-vs-bed-slinger/)
+  Explica los dos sistemas de movimiento y, sobre todo, aclara que el factor decisivo no es la cinemática sino la cámara cerrada. Usar para: no pagar por velocidad que no se necesita.
+- [SpoolHound — Which Bambu Lab Printer Should You Buy? (2026)](https://spoolhound.com/which-bambu-lab-printer)
+  Comparativa actualizada de la línea completa. Usar para: contexto de precios de referencia y estado del catálogo (la X1 Carbon fue descontinuada en marzo de 2026).
+- [TodoToner — catálogo Bambu Lab](https://www.todotoner.cl/)
+  Distribuidor oficial en Chile, con tienda física en Santiago Centro. Usar para: precios locales reales en CLP y garantía nacional. **Precios verificados el 2026-08-02**: A1 mini Combo $399.990 · A1 Combo $519.990 · P1S Combo $919.990 · P2S Combo $1.139.990 · H2D Combo $2.299.990.
+
 ### Multicolor y su costo real
 
 - [Slice Lab — Guía de impresión multicolor: AMS, MMU y alternativas](https://slice-lab.com/en/guide-multi-color)

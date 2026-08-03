@@ -38,6 +38,7 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 | # | Lección | De qué trata |
 |---|---------|--------------|
 | 1 | [Una boquilla, cuatro colores](https://gpilleux.github.io/capas/lessons/0001-una-boquilla-cuatro-colores.html) | Por qué una impresora "multicolor" no imprime varios colores a la vez, qué cuesta cada cambio de color, y qué compras realmente cuando compras un AMS. |
+| 2 | [Elegir la máquina](https://gpilleux.github.io/capas/lessons/0002-elegir-la-maquina.html) | "¿Cuál compro?" son cuatro preguntas independientes. Cámara cerrada, sistema de movimiento, tipo de AMS y tamaño de cama — con precios reales y un widget que arma el argumento por ti. |
 
 > Van saliendo de a poco. Cada una asume la anterior.
 
