@@ -331,6 +331,56 @@ table.decision-table tr.pass td:first-child { color: var(--good); font-weight: 7
 .decision-delta { font-size: .85rem; margin: .8rem 0 0; }
 .decision-note { font-size: .82rem; color: var(--ink-soft); margin: .6rem 0 0; line-height: 1.5; }
 
+/* ---------- Simulador de veladuras (ver assets/blend.js) ---------- */
+
+.blend-controls {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .8rem;
+  margin-top: .8rem;
+}
+@media (max-width: 34rem) { .blend-controls { grid-template-columns: 1fr; } }
+
+.blend select {
+  width: 100%;
+  font: inherit;
+  font-size: .82rem;
+  padding: .4rem .5rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.blend-ramp {
+  display: flex;
+  height: 2.6rem;
+  margin: .9rem 0 1rem;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.blend-cell { flex: 1; position: relative; }
+.blend-cell.on {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+.blend-result {
+  display: grid;
+  grid-template-columns: 4.5rem 1fr;
+  gap: .9rem;
+  align-items: start;
+}
+.blend-chip {
+  height: 4.5rem;
+  border-radius: 4px;
+  border: 1px solid var(--rule);
+}
+.blend-text { margin: 0; font-size: .84rem; line-height: 1.5; }
+.blend-text small { color: var(--ink-soft); font-size: .76rem; }
+
 /* ---------- Pie de lección ---------- */
 
 .footer {

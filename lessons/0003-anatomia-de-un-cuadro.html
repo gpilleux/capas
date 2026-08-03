@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 3 — Anatomía de un cuadro</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 3 · Filament painting</p>
+<h1>Anatomía de un cuadro</h1>
+<p class="dek">Cómo cuatro carretes de plástico producen cientos de tonos — y por qué el cuadro que quiere tu amiga es, técnicamente, más fácil de lo que suena.</p>
+<p class="meta-line">
+  ~12 minutos · Viene de <a href="0001-una-boquilla-cuatro-colores.html">Lección 1</a> y <a href="0002-elegir-la-maquina.html">Lección 2</a> · Glosario: <a href="../reference/glosario.html">reference/glosario.html</a>
+</p>
+
+<p>Un cuadro de <a href="https://shop.thehueforge.com/blogs/news/what-is-hueforge">HueForge</a> no se imprime en colores. Se imprime en <strong>veladuras</strong>: capas translúcidas apiladas, donde cada una deja ver algo de la anterior. Es la misma técnica que usaban los pintores al óleo para lograr una piel — no mezclando pigmento, sino superponiendo capas finas.</p>
+
+<p>La consecuencia es la que importa: <strong>con cuatro filamentos se obtienen cientos de tonos</strong>, y ninguno de ellos hay que comprarlo.</p>
+
+<h2>TD: el único número que hay que entender</h2>
+
+<p>Todo filamento deja pasar algo de luz. Cuánta, depende del color y del fabricante. El <strong>TD</strong> (<em>transmission distance</em>) mide exactamente eso: <a href="https://hueforge.wiki/index.php/FAQ">cuántos milímetros de ese filamento hacen falta para que deje de traslucir lo que tiene debajo</a>.</p>
+
+<ul>
+  <li><strong>TD bajo</strong> (un negro, ~0,5 a 1,5) tapa casi de inmediato. Dos o tres capas y ya no se ve nada abajo.</li>
+  <li><strong>TD alto</strong> (un blanco translúcido, ~8 a 15) no tapa nunca en la práctica: haría falta un centímetro de espesor. Por eso <em>tiñe</em> en vez de cubrir.</li>
+</ul>
+
+<p>Ese "no tapa nunca" no es un defecto. Es el motor de todo el sistema: es lo que produce los grises, los medios tonos y los degradados que el cuadro necesita.</p>
+
+<h2>Míralo funcionar</h2>
+
+<p>Elige qué va abajo, qué va encima, y cuántas capas de 0,08 mm apilas. La franja muestra cómo evoluciona el color a medida que se acumula espesor — 40 capas son 3,2 mm, el grosor típico de un cuadro entero.</p>
+
+<p>Prueba dos cosas: pon <strong>Gris medio sobre Negro</strong> y recorre el slider, para ver un degradado nacer de dos filamentos. Después cambia el de arriba a <strong>Blanco translúcido</strong> y observa que ni con las 40 capas logra taparlo. Eso es TD 10 contra TD 3.</p>
+
+<div data-blend></div>
+
+<p class="sidenote">Los TD del simulador son ilustrativos, dentro de los rangos publicados. Los reales se sacan de la biblioteca de HueForge o se miden con una pieza de prueba — <a href="https://filascope.com/guides/hueforge-td-complete-guide">adivinarlos es el error número uno</a>.</p>
+
+<h2>La receta técnica</h2>
+
+<p>Un cuadro tiene ajustes muy distintos a los de una pieza normal. Los que importan <a href="https://filascope.com/guides/hueforge-beginners-guide">(guía para principiantes de FilaScope)</a>:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Ajuste</th><th>Valor</th><th>Por qué</th></tr>
+  <tr><td>Altura de capa</td><td>0,08 – 0,12 mm</td><td>Cada capa es un escalón de tono. Más finas, transiciones más suaves.</td></tr>
+  <tr><td>Capa base</td><td>0,16 mm</td><td>La primera necesita cuerpo para adherirse bien a la cama.</td></tr>
+  <tr><td>Relleno</td><td>100%</td><td>La pieza es delgada y maciza; el aire interior arruinaría la traslucidez.</td></tr>
+  <tr><td>Orientación</td><td>Plano, cara arriba</td><td>El cuadro crece hacia ti, capa sobre capa. Imprimirlo boca abajo exige el plugin <a href="https://shop.thehueforge.com/pages/flatforge-plugin">FlatForge</a>.</td></tr>
+  <tr><td>Torre de purga</td><td><b>Apagada</b></td><td>Ver abajo. Es el ajuste más contraintuitivo de todo el curso.</td></tr>
+</table>
+</div>
+
+<p>El software cuesta <strong>US$18</strong> por una licencia personal de por vida <a href="https://www.creativebloq.com/how-to/what-is-a-hueforge">(pago único)</a>. Una impresión tarda entre 2 y 30 horas según el tamaño y el detalle.</p>
+
+<h2>La corrección a la Lección 1</h2>
+
+<p>En la primera clase te dije que la purga es el costo del multicolor: 0,3 a 1,5 g por cambio, 500 cambios, hasta 150 g a la basura. Todo eso es cierto — <strong>y casi no aplica aquí</strong>.</p>
+
+<p>Dos razones. La primera: un cuadro cambia de color <strong>una vez por capa completa</strong>, no decenas de veces dentro de cada capa. Los cambios se cuentan en decenas, no en centenares. Vuelve a la <a href="0001-una-boquilla-cuatro-colores.html">calculadora de la Lección 1</a> y pon 20 en vez de 500: el desperdicio deja de ser un problema.</p>
+
+<p>La segunda es más elegante. La documentación de HueForge <a href="https://hueforge.wiki/index.php/FAQ">recomienda apagar la torre de purga</a>, porque una mezcla leve entre colores es <em>exactamente lo que el cuadro busca</em>. En cualquier otra impresión, el color residual es un defecto. Aquí es el material de trabajo.</p>
+
+<div class="callout">
+  <span class="label">Y lo que esto significa para la compra</span>
+  <p>HueForge está diseñado para <strong>un solo color por capa</strong>. Cualquier impresora que pueda pausarse y esperar un cambio manual de filamento reproduce un cuadro — <a href="https://hueforge.wiki/index.php/FAQ">no hace falta AMS</a>.</p>
+  <p style="margin-bottom:0">O sea: el AMS no habilita los cuadros, los hace cómodos. Sin él, alguien tiene que estar presente veinte veces durante una impresión de ocho horas. Con él, se va sola. Eso es lo que están comprando — conveniencia real, no una capacidad nueva.</p>
+</div>
+
+<h2>Los cuatro errores que arruinan el primer cuadro</h2>
+
+<ol>
+  <li><strong>Colores demasiado parecidos en valor tonal.</strong> El error más común y el más frustrante <a href="https://huepick.app/articles/filament-guide/choosing-filament-colors-for-hueforge">(HuePick)</a>. Cinco marrones preciosos juntos no producen una imagen legible: sin contraste de claro a oscuro, no hay dibujo. La prueba: mira tu paleta en blanco y negro. Si se ve plana ahí, el cuadro también.</li>
+  <li><strong>Adivinar el TD.</strong> Dos blancos de marcas distintas se comportan distinto. Si el valor está mal, el resultado no se parece a la vista previa.</li>
+  <li><strong>Mezclar acabados.</strong> Usar filamento mate con valores medidos en brillante desalinea todo el cálculo.</li>
+  <li><strong>Elegir una imagen difícil.</strong> Retratos y atardeceres de alto contraste favorecen la técnica. Una foto plana y detallada, no.</li>
+</ol>
+
+<div class="callout myth">
+  <span class="label">Detalle mecánico que sorprende</span>
+  <p style="margin-bottom:0">A 0,08 mm de capa el margen de error es mínimo: si la impresora sobre-extruye aunque sea un poco, la boquilla <strong>golpea la capa anterior en la pasada siguiente</strong> y arranca la pieza. Por eso los cuadros exigen una máquina bien calibrada — es de las impresiones más sensibles que existen, aunque parezcan simples.</p>
+</div>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://hueforge.wiki/index.php/FAQ">HueForge Wiki — FAQ</a>. Es la documentación de la propia comunidad del software: responde qué es TD, qué filamentos tener al empezar y qué ajustes cambiar, sin el ruido de los blogs. Para el primer proyecto real, el complemento es la <a href="https://filascope.com/guides/hueforge-beginners-guide">guía de FilaScope</a>.</p>
+  <p>Antes de comprar filamento, pásale a tu amiga <a href="https://reddit.com/r/hueforge">r/hueforge</a>: ahí se publican cuadros terminados junto a la paleta exacta que usaron. Copiar una paleta que ya funcionó es la forma más rápida de que el primer intento salga bien.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>El primer modelo propio: de una idea a un archivo listo para imprimir, sin CAD todavía.</li>
+    <li>Más adelante: modelado paramétrico desde código y cómo conectarlo a Claude Code.</li>
+  </ul>
+
+  <h3>Términos nuevos de esta lección</h3>
+  <p><a href="../reference/glosario.html">Veladura · Slider · Capa base · FlatForge</a></p>
+
+  <div class="ask">
+    <b>Esta es la clase que tu amiga querría leer.</b> Si tienen una imagen candidata para el primer cuadro, muéstramela y la evaluamos juntos: contraste tonal, tamaño, cuántos filamentos necesitarían y cuántas horas.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/blend.js"></script>
+<script>
+  Blend.mount({
+    layerHeight: 0.08,
+    maxLayers: 40,
+    defaults: { base: "Negro", top: "Gris medio", layers: 12 },
+    filaments: [
+      { name: "Negro",              td: 1.0,  hex: "#141414" },
+      { name: "Blanco translúcido", td: 10.0, hex: "#f4f2ee" },
+      { name: "Blanco opaco",       td: 1.8,  hex: "#fbfaf7" },
+      { name: "Gris medio",         td: 3.0,  hex: "#7d7d7d" },
+      { name: "Rojo",               td: 4.0,  hex: "#b8302a" },
+      { name: "Azul",               td: 3.5,  hex: "#2a55a8" },
+      { name: "Amarillo",           td: 6.0,  hex: "#e3bd25" },
+      { name: "Verde",              td: 4.0,  hex: "#2f8552" }
+    ]
+  });
+
+  Quiz.mount(
+    {
+      q: "Repaso: para hacer cuadros en PLA, ¿qué le exige HueForge a la impresora?",
+      opts: [
+        { t: "Nada especial: basta con que sepa pausar",
+          ok: true,
+          fb: "Un color por capa. Cualquier máquina que pause sirve; el AMS solo evita tener que estar presente en cada cambio." },
+        { t: "Cámara cerrada, o la pieza se va a agrietar",
+          ok: false,
+          fb: "El PLA no necesita cámara cerrada — eso es un requisito del ABS y el ASA. Lo viste en la Lección 2." },
+        { t: "Un AMS, porque cambia color en cada capa",
+          ok: false,
+          fb: "Cambia por capa, sí, pero esos cambios se pueden hacer a mano en una pausa. El AMS es comodidad, no requisito." }
+      ]
+    },
+    {
+      q: "Un filamento con TD alto, ¿qué le hace al color que tiene debajo?",
+      opts: [
+        { t: "Lo tiñe apenas: necesita mucho espesor",
+          ok: true,
+          fb: "TD alto = la luz viaja lejos = translúcido. Un blanco de TD 10 necesitaría 10 mm para tapar del todo. Eso genera los medios tonos." },
+        { t: "Lo tapa de inmediato, en dos o tres capas",
+          ok: false,
+          fb: "Eso hace un TD bajo, como el de un negro (~1 mm). Es la propiedad opuesta." },
+        { t: "Lo refleja sin llegar a mezclarse con él",
+          ok: false,
+          fb: "No hay reflejo: la luz atraviesa el plástico y vuelve teñida. La mezcla es óptica, y es todo el truco." }
+      ]
+    },
+    {
+      q: "¿Cuál es el error que más arruina un primer cuadro?",
+      opts: [
+        { t: "Elegir colores muy parecidos en valor tonal",
+          ok: true,
+          fb: "Sin recorrido de claro a oscuro no hay imagen legible. Prueba: mira la paleta en blanco y negro antes de comprar." },
+        { t: "Imprimir con una altura de capa demasiado baja",
+          ok: false,
+          fb: "Al revés: capas finas (0,08 mm) dan transiciones más suaves. Es lo recomendado, no un error." },
+        { t: "Usar demasiados filamentos distintos en la obra",
+          ok: false,
+          fb: "Cuatro bien elegidos rinden cientos de tonos. El problema nunca es la cantidad, es la falta de contraste." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

@@ -46,10 +46,10 @@
 </head>
 <body>
 
-<p class="kicker">Referencia · v2</p>
+<p class="kicker">Referencia · v3</p>
 <h1>Glosario</h1>
 <p class="dek">El vocabulario mínimo para entrar a una conversación de impresión 3D sin quedar afuera. Toda lección de este curso usa estos términos exactamente con este significado.</p>
-<p class="meta-line">Actualizado 2026-08-02 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a></p>
+<p class="meta-line">Actualizado 2026-08-03 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a> · <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a></p>
 
 <p class="group">La tecnología</p>
 <dl>
@@ -157,7 +157,19 @@
 <dd>Software que convierte una imagen 2D en un relieve impreso apilando pocos filamentos translúcidos. Aprovecha que el plástico deja pasar luz: variando el espesor de cada capa de color, mezcla ópticamente tonos nuevos, como veladuras de pintura.</dd>
 
 <dt>TD <span class="en">Transmission Distance</span></dt>
-<dd>Cuántos milímetros de un filamento hacen falta para que deje de traslucir el color que tiene debajo. Es el número que HueForge necesita de cada filamento para predecir el resultado.</dd>
+<dd>Cuántos milímetros de un filamento hacen falta para que deje de traslucir el color que tiene debajo. Es el número que HueForge necesita de cada filamento para predecir el resultado. <b>TD bajo</b> (~1, un negro) tapa en dos capas; <b>TD alto</b> (~10, un blanco translúcido) no tapa nunca en la práctica: tiñe. Ver <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a>.</dd>
+
+<dt>Veladura</dt>
+<dd>Término prestado de la pintura al óleo: una capa translúcida que deja ver la de abajo y produce un color nuevo por superposición, no por mezcla. Es literalmente lo que hace un cuadro impreso.</dd>
+
+<dt>Slider <span class="en">(en HueForge)</span></dt>
+<dd>Cada marca en la línea de tiempo del software indica en qué capa exacta se cambia de filamento. Un slider = un cambio de color en toda la impresión. Por eso un cuadro tiene decenas de cambios y no centenares.</dd>
+
+<dt>Capa base</dt>
+<dd>La primera capa de un cuadro, más gruesa que las demás (0,16&nbsp;mm frente a 0,08&nbsp;mm), porque necesita cuerpo para adherirse a la cama.</dd>
+
+<dt>FlatForge</dt>
+<dd>Plugin de HueForge para imprimir el cuadro boca abajo o a doble cara. La orientación por defecto es plano y cara arriba: la imagen crece hacia el techo, capa sobre capa.</dd>
 
 <dt>Litofanía <span class="en">lithophane</span></dt>
 <dd>El primo monocromo del cuadro HueForge: una placa blanca de espesor variable que revela una imagen solo al ponerle luz detrás.</dd>

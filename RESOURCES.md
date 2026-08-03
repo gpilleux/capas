@@ -51,6 +51,14 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
   Contexto y ejemplos del resultado alcanzable. Usar para: calibrar expectativas de lo que sale.
 - [Tom's Hardware — How to Paint with a 3D Printer Using HueForge](https://www.tomshardware.com/how-to/hugeforge-paint-with-3d-printer)
   Tutorial paso a paso de medio confiable. Usar para: el primer cuadro real.
+- [HueForge Wiki — FAQ](https://hueforge.wiki/index.php/FAQ)
+  Documentación de la comunidad del software. Usar para: qué es TD, qué filamentos tener al empezar, y los dos datos clave — que no hace falta AMS (basta con pausas manuales) y que conviene **apagar la torre de purga**.
+- [FilaScope — HueForge for Beginners](https://filascope.com/guides/hueforge-beginners-guide) · [Guía completa de TD](https://filascope.com/guides/hueforge-td-complete-guide)
+  Ajustes concretos (0,08–0,12 mm de capa, base 0,16 mm, relleno 100%) y cómo medir o verificar TD. Usar para: configurar el primer cuadro y no adivinar valores.
+- [HuePick — Cómo elegir los colores de filamento](https://huepick.app/articles/filament-guide/choosing-filament-colors-for-hueforge)
+  Por qué el error más común es elegir colores de valor tonal parecido. Usar para: armar la paleta antes de gastar en filamento.
+- [FlatForge Plugin](https://shop.thehueforge.com/pages/flatforge-plugin)
+  Para imprimir boca abajo o a doble cara. Usar para: cuando el acabado de la cara superior no alcance.
 
 ### Modelado (CAD)
 
