@@ -17,7 +17,7 @@
 
 ---
 
-Esto empezó con una compra a medias: una impresora 3D entre dos amigos, cuadros multicolor por hacer y cero experiencia previa. En vez de acumular tutoriales sueltos de YouTube, el curso se fue escribiendo a medida que aparecían las preguntas.
+Esto empezó con una compra a medias: una impresora 3D entre dos amigos, cero experiencia previa y una idea vaga pero ambiciosa — poder fabricar cualquier cosa que se nos ocurra. Repuestos que ya no se venden, organizadores a medida, regalos, piezas que no existen. Y, de paso, cuadros multicolor. En vez de acumular tutoriales sueltos de YouTube, el curso se fue escribiendo a medida que aparecían las preguntas.
 
 El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una con una idea y un ejercicio. Se leen en diez minutos y se imprimen bien en papel.
 
@@ -40,6 +40,8 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 | 1 | [Una boquilla, cuatro colores](https://gpilleux.github.io/capas/lessons/0001-una-boquilla-cuatro-colores.html) | Por qué una impresora "multicolor" no imprime varios colores a la vez, qué cuesta cada cambio de color, y qué compras realmente cuando compras un AMS. |
 | 2 | [Elegir la máquina](https://gpilleux.github.io/capas/lessons/0002-elegir-la-maquina.html) | "¿Cuál compro?" son cuatro preguntas independientes. Cámara cerrada, sistema de movimiento, tipo de AMS y tamaño de cama — con precios reales y un widget que arma el argumento por ti. |
 | 3 | [Anatomía de un cuadro](https://gpilleux.github.io/capas/lessons/0003-anatomia-de-un-cuadro.html) | Cómo cuatro filamentos producen cientos de tonos. Qué es el TD, con un simulador de veladuras, y por qué esta técnica invierte casi todo lo de la Lección 1. |
+
+> El curso usa objetos concretos como hilo conductor — un repuesto, un organizador, una figura, un cuadro — porque los conceptos abstractos no se retienen. Ninguno de esos ejemplos es el propósito: la máquina sirve para lo que se te ocurra.
 
 > Van saliendo de a poco. Cada una asume la anterior.
 
