@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 1 — Una boquilla, cuatro colores</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 1 · Fundamentos</p>
+<h1>Una boquilla, cuatro colores</h1>
+<p class="dek">Cómo una máquina con un solo agujero de 0,4&nbsp;mm imprime en cuatro colores — y por qué esa respuesta explica casi todo lo demás que vas a aprender.</p>
+<p class="meta-line">
+  ~10 minutos · Requisitos: ninguno · Glosario: <a href="../reference/glosario.html">reference/glosario.html</a>
+</p>
+
+<p>Van a comprar una impresora entre dos. Tu amiga quiere cuadros multicolor con textura. Antes de discutir precio, marca o software, hay <strong>un solo concepto</strong> que hay que tener claro, porque de él cuelgan el costo, el tiempo, la basura que genera y hasta la razón de existir del software de cuadros.</p>
+
+<div class="callout myth">
+  <span class="label">El malentendido a desarmar</span>
+  <p>«Una impresora multicolor consume varios colores <em>al mismo tiempo</em>.»</p>
+  <p style="margin-bottom:0">No. El P2S tiene <strong>una sola boquilla</strong>. Los cuatro carretes del AMS se turnan: la máquina corta el filamento actual, lo saca, mete el siguiente y sigue. Todo multicolor de esta categoría es <strong>secuencial</strong>, no simultáneo.</p>
+</div>
+
+<h2>La cadena de producción</h2>
+
+<p>Si vienes del software, esto te va a resultar familiar: es un pipeline de compilación. El modelo es el código fuente, el slicer es el compilador y la impresora es una máquina que ejecuta instrucciones sin entender qué está haciendo.</p>
+
+<div class="pipeline">
+  <div class="step"><div class="n">1</div><div>
+    <b>Modelo 3D</b>
+    <p>La forma del objeto. La haces en CAD o la descargas de <a href="https://makerworld.com/">MakerWorld</a>. Solo describe geometría: no dice nada de temperaturas ni de colores.</p>
+  </div></div>
+  <div class="step"><div class="n">2</div><div>
+    <b>Slicer</b>
+    <p>Bambu Studio. Rebana el modelo en capas horizontales de ~0,2&nbsp;mm y decide todo lo que el modelo no dice: velocidad, temperatura, relleno, soportes, cuándo cambiar de color.</p>
+  </div></div>
+  <div class="step"><div class="n">3</div><div>
+    <b>G-code</b>
+    <p>La salida: una lista literal de instrucciones. <span class="mono">anda a X120 Y80, extruye 4,2&nbsp;mm de filamento, calienta a 220&nbsp;°C</span>. Decenas de miles de líneas.</p>
+  </div></div>
+  <div class="step"><div class="n">4</div><div>
+    <b>Impresora</b>
+    <p>Ejecuta esa lista, línea por línea, durante horas. No sabe que está haciendo un jarrón. Solo obedece coordenadas.</p>
+  </div></div>
+</div>
+
+<p class="sidenote">Consecuencia práctica: cuando una impresión sale mal, el culpable casi nunca es el modelo. Es el paso 2. Aprender a imprimir es, en un 80%, aprender el slicer.</p>
+
+<h2>Qué pasa en los últimos 4 centímetros</h2>
+
+<p>El filamento —un hilo de plástico de 1,75&nbsp;mm— entra empujado por el <strong>extrusor</strong>, un motor con engranajes. Baja al <strong>hotend</strong>, que lo funde alrededor de los 220&nbsp;°C. Sale por la <strong>boquilla</strong> de 0,4&nbsp;mm como una hebra fina que se pega sobre la capa anterior y se enfría en un segundo.</p>
+
+<p>Repite eso unas cien mil veces y tienes un objeto. Toda impresión FDM es esa operación, nada más.</p>
+
+<p>Ahora mira el problema del color: dentro del hotend siempre hay plástico fundido. Cuando la máquina cambia de rojo a blanco, ese canal sigue lleno de rojo. Si empezara a imprimir de inmediato, saldría rosado. Así que <strong>purga</strong>: bombea filamento nuevo hasta que sale limpio, y lo desecha.</p>
+
+<h2>Lo que cuesta cada cambio de color</h2>
+
+<p>La purga no es un detalle: es <em>el</em> costo del multicolor. Cuánto se pierde depende de qué tan agresiva sea la transición <a href="https://filamentcalcs.com/guides/multi-color-printing-ams-worth-it">(datos medidos por filamentcalcs)</a>:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Transición</th><th>Filamento purgado</th><th>Desperdicio</th></tr>
+  <tr><td>Negro → azul (oscuro a oscuro)</td><td>40–60 mm</td><td>~0,3 g</td></tr>
+  <tr><td>Blanco → negro (claro a oscuro)</td><td>60–80 mm</td><td>~0,5 g</td></tr>
+  <tr><td>Rojo → verde (misma intensidad)</td><td>80–120 mm</td><td>~0,7 g</td></tr>
+  <tr><td><b>Negro → blanco (oscuro a claro)</b></td><td>180–280 mm</td><td><b>~1,5 g</b></td></tr>
+</table>
+</div>
+
+<p>Una impresión de cuatro colores puede acumular 500 cambios. Juega con esto:</p>
+
+<div class="widget">
+  <b>Calculadora de purga</b>
+  <label>Cambios de color en la impresión: <span id="v-sw" class="mono">500</span></label>
+  <input type="range" id="sw" min="20" max="1200" step="10" value="500">
+
+  <label>Desperdicio promedio por cambio: <span id="v-g" class="mono">0,7 g</span> — mueve a la derecha si tu paleta va de oscuro a claro</label>
+  <input type="range" id="g" min="3" max="15" step="1" value="7">
+
+  <label>Precio del filamento por kilo: <span id="v-p" class="mono">$20.000</span> CLP <em>(supuesto — falta verificar en retailers chilenos)</em></label>
+  <input type="range" id="p" min="10000" max="40000" step="1000" value="20000">
+
+  <div class="readout" id="out">—</div>
+</div>
+
+<div class="callout">
+  <span class="label">Por qué esto importa para los cuadros</span>
+  <p style="margin-bottom:0">Un cuadro estilo <a href="https://shop.thehueforge.com/blogs/news/what-is-hueforge">HueForge</a> es plano y grande: mucha superficie, pocas capas. Si el color cambiara muchas veces <em>dentro</em> de cada capa, la purga costaría más que el cuadro. Por eso ese software usa <strong>cambio por capa</strong>: un solo swap cada vez que sube un nivel. Ese truco es la diferencia entre un cuadro viable y uno absurdo.</p>
+</div>
+
+<h2>Qué estás comprando cuando compras el "Combo"</h2>
+
+<p>El Combo = impresora P2S + <strong>AMS 2 Pro</strong>, la caja de cuatro carretes. Lo que el AMS realmente aporta <a href="https://www.additive-x.com/blog/bambu-lab-p2s-combo-review">(review técnica additive-x)</a>:</p>
+
+<ul>
+  <li><strong>Cambio automático</strong> de filamento — sin eso, cada cambio de color sería una pausa manual tuya.</li>
+  <li><strong>Secado integrado</strong> del filamento. El plástico absorbe humedad del aire y eso arruina las impresiones; el AMS 2 Pro lo mantiene seco.</li>
+  <li><strong>Lectura RFID</strong> de los carretes Bambu: la máquina sabe qué color y material tiene cargado.</li>
+  <li>Se pueden encadenar varias unidades para llegar a más colores en una misma impresión.</li>
+</ul>
+
+<p>Y lo que <em>no</em> hace, que conviene saber antes de pagar:</p>
+
+<ul>
+  <li>No admite <strong>TPU</strong> ni filamentos flexibles: esos van a mano por la ranura externa.</li>
+  <li>No <strong>seca e imprime a la vez</strong> sin un adaptador de corriente adicional.</li>
+  <li>La cámara del P2S es cerrada pero de calentamiento <strong>pasivo</strong>: sirve para ABS/ASA, no para materiales de alta temperatura.</li>
+  <li>No elimina la purga. Nada la elimina: es física del hotend, no una limitación de esta marca.</li>
+</ul>
+
+<p class="sidenote">Dato para la conversación de compra: en TodoToner el Combo está a <b>$1.139.990 CLP</b> (verificado el 2026-08-02). El precio oficial en EE.UU. ronda los US$699–799. Es la misma máquina; la diferencia es el mercado, no el producto.</p>
+
+<h2>Comprueba que quedó</h2>
+
+<p>Responde de memoria, sin volver a subir. Equivocarse aquí sirve más que acertar.</p>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://slice-lab.com/en/guide-multi-color">Slice Lab — <em>Multi-Color 3D Printing: Complete Guide to AMS, MMU, and Alternatives</em></a>. Es la mejor panorámica de cómo distintas máquinas resuelven el mismo problema del color, y deja claro qué compras y qué no cuando compras un AMS. Complemento con números duros: <a href="https://filamentcalcs.com/guides/multi-color-printing-ams-worth-it">la matemática real del purge</a>.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>Anatomía del cuadro: cómo HueForge convierte una foto en capas de filamento, y qué se puede y no se puede lograr.</li>
+    <li>Criterios de compra: qué justifica el P2S frente al A1, el P1S y la competencia — para que la decisión sea tuya, no heredada.</li>
+  </ul>
+
+  <h3>Términos nuevos de esta lección</h3>
+  <p><a href="../reference/glosario.html">Slicer · G-code · Boquilla · Hotend · Altura de capa · Purga · Torre de purga · Cambio por capa · AMS</a></p>
+
+  <div class="ask">
+    <b>Soy tu profesor, no un PDF.</b> Si algo quedó turbio — por qué el G-code no trae colores, qué pasa si se corta la luz a las 6 horas, si conviene otro modelo — pregúntamelo directamente en Claude Code. Preguntar temprano evita aprender mal.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script>
+  // --- Calculadora de purga ---
+  const $ = (id) => document.getElementById(id);
+  const clp = (n) => "$" + Math.round(n).toLocaleString("es-CL");
+
+  function recalc() {
+    const swaps = +$("sw").value;
+    const grams = +$("g").value / 10;
+    const price = +$("p").value;
+    const total = swaps * grams;
+    $("v-sw").textContent = swaps;
+    $("v-g").textContent = grams.toFixed(1).replace(".", ",") + " g";
+    $("v-p").textContent = clp(price);
+    $("out").innerHTML =
+      `${Math.round(total)} g a la basura` +
+      `<small>${clp((total / 1000) * price)} CLP · ${(total / 10).toFixed(0)}% de un carrete de 1 kg</small>`;
+  }
+  ["sw", "g", "p"].forEach((id) => $(id).addEventListener("input", recalc));
+  recalc();
+
+  // --- Recuperación ---
+  Quiz.mount(
+    {
+      q: "¿Qué hace la impresora cuando la pieza cambia de rojo a blanco?",
+      opts: [
+        { t: "Corta el rojo, purga el resto y carga el blanco",
+          ok: true,
+          fb: "Una boquilla, colores en secuencia. La purga existe porque el hotend todavía está lleno del color anterior." },
+        { t: "Abre una segunda boquilla cargada con el blanco",
+          ok: false,
+          fb: "Eso son las impresoras de doble extrusor u otras arquitecturas. El P2S tiene una sola boquilla; el AMS solo cambia lo que entra en ella." },
+        { t: "Mezcla ambos colores dentro de la misma boquilla",
+          ok: false,
+          fb: "Mezclar es justamente lo que quiere evitar: el rosado residual es el problema que la purga resuelve." }
+      ]
+    },
+    {
+      q: "¿Qué está ejecutando la impresora mientras imprime?",
+      opts: [
+        { t: "Instrucciones de movimiento ya calculadas por el slicer",
+          ok: true,
+          fb: "Eso es el G-code. La máquina no interpreta geometría: obedece coordenadas, una por una." },
+        { t: "El modelo 3D, que va interpretando capa por capa",
+          ok: false,
+          fb: "La impresora nunca ve el modelo. Rebanar es trabajo del slicer, en tu computador, antes de enviar nada." },
+        { t: "La imagen del objeto, que traduce a movimientos reales",
+          ok: false,
+          fb: "No hay traducción a bordo. Todas las decisiones ya se tomaron en el slicer; la impresora es puramente ejecutora." }
+      ]
+    },
+    {
+      q: "¿Cuál de estas transiciones de color desperdicia más filamento?",
+      opts: [
+        { t: "De negro a blanco, porque cuesta arrastrar el oscuro",
+          ok: true,
+          fb: "Unos 1,5 g por cambio: cinco veces más que negro→azul. Un rastro mínimo de negro contamina el blanco visiblemente." },
+        { t: "De blanco a negro, porque el negro pesa y cubre más",
+          ok: false,
+          fb: "Al revés: el negro tapa cualquier residuo de blanco, así que se purga poco. Ronda los 0,5 g." },
+        { t: "Ninguna, porque la purga es igual en cada cambio",
+          ok: false,
+          fb: "Varía entre ~0,3 g y ~1,5 g según la transición. Por eso elegir bien la paleta ahorra plástico de verdad." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

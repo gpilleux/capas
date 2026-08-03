@@ -1,0 +1,8 @@
+# Material personal del taller — no se publica.
+# Contiene contexto privado sobre el alumno, presupuesto y progreso.
+MISSION.md
+NOTES.md
+learning-records/
+
+# Sistema
+.DS_Store

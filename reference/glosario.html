@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Glosario — Impresión 3D</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  /* Vista de referencia: más densa que una lección, dos columnas al imprimir */
+  body { max-width: 46rem; }
+  dl { margin: 0; }
+  dt {
+    font-weight: 600;
+    margin-top: 1.15rem;
+    font-size: .98rem;
+  }
+  dt .en {
+    font-weight: 400;
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: .85rem;
+  }
+  dd {
+    margin: .15rem 0 0;
+    font-size: .9rem;
+    line-height: 1.5;
+    color: var(--ink-soft);
+  }
+  dd b { color: var(--ink); font-weight: 600; }
+  .group {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 2.6rem 0 .2rem;
+    padding-top: .9rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media print {
+    dl { column-count: 2; column-gap: 2rem; }
+    dt, dd { break-inside: avoid; }
+    .group { column-span: all; }
+  }
+</style>
+</head>
+<body>
+
+<p class="kicker">Referencia · v1</p>
+<h1>Glosario</h1>
+<p class="dek">El vocabulario mínimo para entrar a una conversación de impresión 3D sin quedar afuera. Toda lección de este curso usa estos términos exactamente con este significado.</p>
+<p class="meta-line">Actualizado 2026-08-02 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a></p>
+
+<p class="group">La tecnología</p>
+<dl>
+
+<dt>FDM / FFF <span class="en">Fused Deposition Modeling</span></dt>
+<dd>La tecnología del 99% de las impresoras de escritorio: se derrite un hilo de plástico y se deposita en capas. Es de la que trata todo este curso. Su alternativa doméstica es la <b>resina</b>, que cura líquido con luz UV: más detalle, mucho más engorro y toxicidad.</dd>
+
+<dt>Filamento</dt>
+<dd>El hilo de plástico, vendido en carretes de 1&nbsp;kg, casi siempre de 1,75&nbsp;mm de diámetro. Es la "tinta" de la impresora.</dd>
+
+<dt>PLA</dt>
+<dd>El plástico por defecto: barato, fácil, sin olor, biodegradable en teoría. Se deforma con calor (no dejar en un auto al sol). Es el material de casi todo lo decorativo, incluidos los cuadros.</dd>
+
+<dt>PETG</dt>
+<dd>Un escalón más duro y resistente al calor y a la humedad que el PLA, algo más difícil de imprimir. Para piezas funcionales o de exterior.</dd>
+
+<dt>ABS / ASA</dt>
+<dd>Plásticos de ingeniería. Resistentes, pero se despegan y agrietan si se enfrían mal, y emiten vapores: exigen <b>cámara cerrada</b> y ventilación. La razón principal para querer una impresora cerrada.</dd>
+
+<dt>TPU</dt>
+<dd>Filamento flexible, tipo goma. Importante: <b>no es compatible con el AMS</b> — se alimenta a mano por la ranura externa.</dd>
+
+</dl>
+
+<p class="group">Las partes de la máquina</p>
+<dl>
+
+<dt>Extrusor <span class="en">extruder</span></dt>
+<dd>El motor con engranajes que empuja el filamento hacia abajo. En el P2S es un servo (<b>DynaSense</b>) que mide cuánta fuerza está aplicando, lo que permite detectar atascos.</dd>
+
+<dt>Hotend</dt>
+<dd>El bloque que calienta el filamento hasta fundirlo, típicamente entre 190&nbsp;°C y 260&nbsp;°C según el material.</dd>
+
+<dt>Boquilla <span class="en">nozzle</span></dt>
+<dd>El agujerito por donde sale el plástico. El estándar es <b>0,4&nbsp;mm</b>; el P2S admite además 0,2 / 0,6 / 0,8&nbsp;mm. Más chica = más detalle y más lento. Es una pieza de consumo: se desgasta y se cambia.</dd>
+
+<dt>Cama <span class="en">bed / build plate</span></dt>
+<dd>La placa caliente sobre la que se imprime. Se calienta para que la primera capa se pegue. Es magnética y extraíble: se flexiona para despegar la pieza.</dd>
+
+<dt>CoreXY</dt>
+<dd>La arquitectura de movimiento del P2S: dos motores fijos mueven el cabezal en X e Y mediante correas cruzadas, y la cama solo baja en Z. Como casi nada se mueve, permite acelerar mucho más que una impresora donde la cama va y viene. Esa es la razón física de que sea rápida.</dd>
+
+<dt>Cámara cerrada <span class="en">enclosure</span></dt>
+<dd>La caja alrededor de la impresora. Retiene calor (evita que ABS/ASA se agrieten), contiene olores y ruido. En el P2S el calentamiento es <b>pasivo</b>: no tiene calefactor propio, por lo que no alcanza para materiales de alta temperatura como PPS-CF o PEEK.</dd>
+
+<dt>AMS <span class="en">Automatic Material System</span></dt>
+<dd>La caja de 4 carretes del "combo". Carga y descarga filamentos automáticamente para que una impresión use varios colores. <b>No imprime varios a la vez</b>: los intercambia en secuencia. Ver <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a>.</dd>
+
+</dl>
+
+<p class="group">El flujo de trabajo</p>
+<dl>
+
+<dt>Modelo 3D</dt>
+<dd>La geometría del objeto, hecha en un programa de CAD o descargada. Describe <em>forma</em>, no cómo fabricarla.</dd>
+
+<dt>STL · 3MF · STEP</dt>
+<dd>Formatos de modelo. <b>STL</b> es el clásico: solo triángulos, sin unidades ni color. <b>3MF</b> es el moderno: lleva escala, colores y ajustes — es el que conviene usar con multicolor. <b>STEP</b> guarda la geometría exacta y editable; es el formato de CAD serio.</dd>
+
+<dt>Slicer</dt>
+<dd>El programa que corta el modelo en capas y decide todo lo que el modelo no dice: temperaturas, velocidades, relleno, soportes. Es el <em>compilador</em> del mundo 3D. Para el P2S: <b>Bambu Studio</b> (oficial) u <b>Orca Slicer</b> (de la comunidad).</dd>
+
+<dt>G-code</dt>
+<dd>La salida del slicer: la lista literal de instrucciones que ejecuta la impresora ("ve a X, extruye tanto, calienta a tanto"). La impresora no sabe qué está imprimiendo; solo obedece esta lista.</dd>
+
+<dt>Altura de capa <span class="en">layer height</span></dt>
+<dd>El grosor de cada rebanada, típicamente 0,2&nbsp;mm. Es el control maestro de la disyuntiva calidad/tiempo: la mitad de altura es el doble de capas y aproximadamente el doble de horas.</dd>
+
+<dt>Relleno <span class="en">infill</span></dt>
+<dd>Las piezas son huecas por dentro, con una retícula de refuerzo. Un 15% de relleno es lo normal; subirlo cuesta plástico y horas.</dd>
+
+<dt>Soportes <span class="en">supports</span></dt>
+<dd>Estructuras desechables que sostienen los voladizos mientras se imprimen. Se rompen y se botan. Diseñar para evitarlos es una habilidad en sí misma.</dd>
+
+<dt>Brim / Raft</dt>
+<dd>Faldón o balsa: material extra alrededor o debajo de la primera capa para que la pieza no se despegue.</dd>
+
+</dl>
+
+<p class="group">Multicolor</p>
+<dl>
+
+<dt>Purga <span class="en">purge / flush</span></dt>
+<dd>Al cambiar de color, queda color viejo dentro del hotend. Hay que expulsarlo antes de seguir. Ese plástico se desecha: de ~0,3&nbsp;g (negro→azul) a ~1,5&nbsp;g (negro→blanco) por cambio.</dd>
+
+<dt>Torre de purga <span class="en">prime tower</span></dt>
+<dd>La columnita que se imprime al lado de la pieza y que recibe la purga. Alternativa: expulsarla al suelo como "cacas" (<em>poop</em>) — el término que realmente usa la comunidad.</dd>
+
+<dt>Cambio por capa <span class="en">swap by layer</span></dt>
+<dd>La forma más eficiente de multicolor: cambiar de color en capas completas, no dentro de una misma capa. Un cambio por capa en vez de decenas. Es el principio en que se basan los cuadros.</dd>
+
+<dt>HueForge</dt>
+<dd>Software que convierte una imagen 2D en un relieve impreso apilando pocos filamentos translúcidos. Aprovecha que el plástico deja pasar luz: variando el espesor de cada capa de color, mezcla ópticamente tonos nuevos, como veladuras de pintura.</dd>
+
+<dt>TD <span class="en">Transmission Distance</span></dt>
+<dd>Cuántos milímetros de un filamento hacen falta para que deje de traslucir el color que tiene debajo. Es el número que HueForge necesita de cada filamento para predecir el resultado.</dd>
+
+<dt>Litofanía <span class="en">lithophane</span></dt>
+<dd>El primo monocromo del cuadro HueForge: una placa blanca de espesor variable que revela una imagen solo al ponerle luz detrás.</dd>
+
+</dl>
+
+<div class="footer">
+  <h3>Cómo usar este glosario</h3>
+  <p>No hay que memorizarlo. Se consulta cuando aparece un término en una lección o en un foro. Los que sí conviene tener incorporados desde el día uno son: <b>slicer</b>, <b>G-code</b>, <b>boquilla</b>, <b>altura de capa</b> y <b>purga</b> — con esos cinco se sigue casi cualquier conversación.</p>
+  <div class="ask">
+    <b>¿Falta un término?</b> Pídeselo a Claude Code y se agrega aquí. Este glosario crece con el curso.
+  </div>
+</div>
+
+</body>
+</html>
