@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Materiales — Impresión 3D</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body { max-width: 46rem; }
+  .mat {
+    border-left: 3px solid var(--rule);
+    padding: .1rem 0 .1rem 1rem;
+    margin: 1.6rem 0;
+  }
+  .mat.pla  { border-left-color: #4a9d5f; }
+  .mat.petg { border-left-color: #3b7dd8; }
+  .mat.abs  { border-left-color: #c2851b; }
+  .mat.asa  { border-left-color: #9a3412; }
+  .mat.tpu  { border-left-color: #7b4ca8; }
+  .mat h3 {
+    margin: 0 0 .1rem;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: baseline;
+    gap: .6rem;
+    flex-wrap: wrap;
+  }
+  .mat h3 .tg {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: .78rem;
+    color: var(--accent);
+    font-weight: 400;
+  }
+  .mat .tag {
+    font-family: -apple-system, sans-serif;
+    font-size: .62rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: .1rem .45rem;
+  }
+  .mat dl { margin: .5rem 0 0; font-size: .85rem; }
+  .mat dt {
+    font-size: .68rem;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    font-family: -apple-system, sans-serif;
+    margin-top: .55rem;
+  }
+  .mat dd { margin: .05rem 0 0; line-height: 1.45; }
+  .group {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 2.6rem 0 .3rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+  @media print { .mat { break-inside: avoid; } }
+</style>
+</head>
+<body>
+
+<p class="kicker">Referencia · v1</p>
+<h1>Materiales</h1>
+<p class="dek">Cuál usar y por qué. Ordenados por temperatura de reblandecimiento, que es el criterio que decide casi todas las discusiones.</p>
+<p class="meta-line">Actualizado 2026-08-03 · Base: <a href="../lessons/0005-de-que-la-hago.html">Lección 5</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="glosario.html">Glosario</a></p>
+
+<div class="callout">
+  <span class="label">Regla de decisión</span>
+  <p style="margin-bottom:0">Primero pregunta <b>dónde va a vivir la pieza</b> (temperatura, sol, humedad), después cuánto esfuerzo recibe. Elige el material <b>más fácil que cumpla</b>: cada escalón de capacidad se paga en dificultad de impresión.</p>
+</div>
+
+<div class="mat pla">
+  <h3>PLA <span class="tg">se ablanda a 55–60 °C</span> <span class="tag">dificultad 1/5</span></h3>
+  <dl>
+    <dt>Para qué</dt>
+    <dd>Todo lo decorativo y buena parte de lo útil bajo techo: organizadores, soportes, ganchos, cajas, figuras, prototipos, cuadros.</dd>
+    <dt>Su gracia</dt>
+    <dd>Imprime en cualquier máquina, sin cámara cerrada y sin olor. Rígido, barato, con buena precisión dimensional.</dd>
+    <dt>Dónde falla</dt>
+    <dd>Calor y sol. Se dobla solo en un auto, en una ventana o cerca de una fuente de calor. Además es frágil: cede de golpe en vez de deformarse.</dd>
+  </dl>
+</div>
+
+<div class="mat petg">
+  <h3>PETG <span class="tg">se ablanda a 70–80 °C</span> <span class="tag">dificultad 2/5</span></h3>
+  <dl>
+    <dt>Para qué</dt>
+    <dd>El escalón siguiente cuando el PLA no da: piezas de auto, cajas para electrónica, cosas que reciben golpes, exteriores moderados, piezas en contacto con agua.</dd>
+    <dt>Su gracia</dt>
+    <dd>Tenaz en vez de frágil, buena adhesión entre capas, resistente a la humedad y a productos químicos. Sigue sin necesitar cámara cerrada.</dd>
+    <dt>Dónde falla</dt>
+    <dd>Tiende a dejar hilos finos entre paredes (<em>stringing</em>). Menos preciso en detalles finos que el PLA.</dd>
+  </dl>
+</div>
+
+<div class="mat abs">
+  <h3>ABS <span class="tg">se ablanda a ~105 °C</span> <span class="tag">dificultad 4/5</span></h3>
+  <dl>
+    <dt>Para qué</dt>
+    <dd>Calor e impacto de verdad. Es el plástico con que se fabrican los interiores de auto y las carcasas de electrodomésticos.</dd>
+    <dt>Su gracia</dt>
+    <dd>Aguanta temperatura y golpes. Se puede lijar y alisar con vapor de acetona.</dd>
+    <dt>Dónde falla</dt>
+    <dd>Se contrae al enfriarse: sin cámara cerrada se agrieta entre capas o se despega de la cama. Emite olor — pide ventilación.</dd>
+  </dl>
+</div>
+
+<div class="mat asa">
+  <h3>ASA <span class="tg">se ablanda a ~105 °C</span> <span class="tag">dificultad 4/5</span></h3>
+  <dl>
+    <dt>Para qué</dt>
+    <dd>Intemperie. Lo que va a vivir afuera todo el año: soportes de cámara, piezas de jardín, cualquier cosa bajo sol directo permanente.</dd>
+    <dt>Su gracia</dt>
+    <dd>Todo lo del ABS más <b>resistencia a los rayos UV</b>: no se pone amarillo ni quebradizo con el sol.</dd>
+    <dt>Dónde falla</dt>
+    <dd>Los mismos problemas del ABS: contracción, cámara cerrada obligatoria, olor.</dd>
+  </dl>
+</div>
+
+<div class="mat tpu">
+  <h3>TPU <span class="tg">flexible, tipo goma</span> <span class="tag">dificultad 3/5</span></h3>
+  <dl>
+    <dt>Para qué</dt>
+    <dd>Lo que tiene que ceder: fundas, topes, empaquetaduras, ruedas, correas, amortiguadores.</dd>
+    <dt>Su gracia</dt>
+    <dd>Se dobla sin romperse y aguanta bien la intemperie.</dd>
+    <dt>Dónde falla</dt>
+    <dd>Lento de imprimir, y <b>el AMS no lo acepta</b>: se carga a mano por la ranura externa, o sea que no entra en impresiones multicolor automáticas.</dd>
+  </dl>
+</div>
+
+<p class="group">Advertencias que aplican a todos</p>
+
+<div class="rule-note">
+<p><b>No son aptos para alimentos por defecto.</b> Las líneas de capa dejan surcos de 20 a 100 micrones; las bacterias miden de 1 a 5 y no salen lavando. La única salida real es sellar con resina epóxica de grado alimentario. Y el PLA, además, no va al lavavajillas.</p>
+
+<p><b>La humedad los arruina a todos.</b> El plástico absorbe agua del aire. Filamento húmedo imprime con burbujas, superficie opaca y capas que se despegan. El PETG y el TPU son especialmente sensibles. Guardar en bolsa con desecante, o en un AMS con secado activo.</p>
+
+<p><b>La orientación no salva un material equivocado.</b> Primero decide el ambiente el material; después la orientación exprime lo mejor de él. Una pieza de PLA perfectamente orientada igual se dobla a 70 °C.</p>
+</div>
+
+<div class="footer">
+  <div class="ask">
+    <b>¿Caso dudoso?</b> Descríbele la pieza a Claude Code diciendo <em>dónde va a vivir</em> y qué esfuerzo recibe. A veces la mejor respuesta no es subir de material, sino cambiar dónde va la pieza.
+  </div>
+</div>
+
+</body>
+</html>

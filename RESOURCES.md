@@ -69,6 +69,17 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
 - [MLC CAD — Why FDM prints are weaker on the Z axis](https://www.mlc-cad.com/resources/3d-printing/why-fdm-3d-prints-are-weaker-on-the-z-axis-anisotropy-explained/)
   Por qué existe la anisotropía, a nivel de adhesión entre capas. Usar para: entender el mecanismo, no solo el número.
 
+### Materiales
+
+- [UAVMODEL — Filament Guide: PLA, PETG, ABS, TPU, Nylon, ASA y Policarbonato comparados](https://blog.uavmodel.com/3d-printing-filament-guide-pla-petg-abs-tpu-nylon-asa-and-polycarbonate-compared/)
+  La familia completa con números concretos de temperatura y resistencia, escrita por gente que fabrica piezas de dron. Usar para: elegir material cuando el PLA no alcanza.
+- [Wevolver — PETG Temperature Resistance](https://www.wevolver.com/article/petg-temperature-resistance-heat-limits-and-practical-insights-for-engineers)
+  Límites térmicos reales del PETG y por qué sirve para interiores de auto. Usar para: el caso más común en que el PLA falla.
+- [Prusa Knowledge Base — Food safe FDM printing](https://help.prusa3d.com/article/food-safe-fdm-printing_112313)
+  La respuesta seria a "¿puedo comer de esto?". Usar para: cualquier pieza que toque comida — la respuesta corta es no sin sellar.
+- [SpoolHound — Food safety guide](https://spoolhound.com/food-safety-guide)
+  El detalle del problema: surcos de 20–100 micrones contra bacterias de 1–5. Usar para: entender por qué lavar no basta.
+
 ### Modelado (CAD)
 
 - [3Dprinting.com — Mejor software CAD para impresión 3D 2026](https://3dprinting.com/software-guides/best-3d-modeling-cad-software/)

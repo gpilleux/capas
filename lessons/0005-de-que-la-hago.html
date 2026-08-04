@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 5 — De qué la hago</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 5 · Materiales</p>
+<h1>De qué la hago</h1>
+<p class="dek">Casi nadie elige mal el material por falta de resistencia. Se elige mal por olvidar dónde va a vivir la pieza.</p>
+<p class="meta-line">
+  ~12 minutos · Viene de <a href="0004-como-pararla-en-la-cama.html">Lección 4</a> · Referencia: <a href="../reference/materiales.html">materiales</a> · <a href="../reference/glosario.html">glosario</a>
+</p>
+
+<p>La lección pasada aprendiste a <em>pararla</em>. Esta es la otra mitad: <em>de qué hacerla</em>. Y la pregunta que casi todos hacen primero —"¿cuál es el más fuerte?"— es la equivocada.</p>
+
+<div class="callout">
+  <span class="label">La pregunta correcta</span>
+  <p style="margin-bottom:0"><strong>¿Dónde va a vivir esta pieza?</strong> Temperatura, sol, humedad, golpes. El 90% de las piezas que fallan no se rompen por débiles: se <em>ablandan</em>, se deforman o se agrietan porque el material estaba en el ambiente equivocado.</p>
+</div>
+
+<h2>El número que manda: la temperatura de reblandecimiento</h2>
+
+<p>Todo termoplástico tiene una temperatura a la que deja de ser rígido y empieza a comportarse como caramelo blando. Se llama <strong>transición vítrea</strong> (Tg), y es el dato que decide casi todas las discusiones.</p>
+
+<p>El PLA —el material por defecto, el que viene en el kit— se ablanda entre los <strong>55 y 60 °C</strong> <a href="https://blog.uavmodel.com/pla-vs-petg-comparison-strength-temperature-resistance-and-when-to-use-each-2026-guide/">(comparativa PLA vs PETG)</a>. Ahora el dato que lo vuelve concreto:</p>
+
+<div class="callout myth">
+  <span class="label">El clásico que todos aprenden a golpes</span>
+  <p style="margin-bottom:0">El tablero de un auto estacionado al sol llega a <strong>70 °C</strong> en verano. Un soporte de teléfono impreso en PLA <a href="https://www.wevolver.com/article/petg-temperature-resistance-heat-limits-and-practical-insights-for-engineers">dura exactamente una tarde</a>: aparece doblado sobre sí mismo, sin haber recibido un solo golpe. No falló por débil. Falló por caluroso.</p>
+</div>
+
+<p>El resto de la familia, ordenada por ese mismo número:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Material</th><th>Se ablanda a</th><th>Su gracia</th><th>Su costo</th></tr>
+  <tr><td><b>PLA</b></td><td>55–60 °C</td><td>Imprime en cualquier máquina, sin olor, rígido, barato. El más fácil que existe.</td><td>Frágil y no tolera calor ni sol.</td></tr>
+  <tr><td><b>PETG</b></td><td>70–80 °C</td><td>Aguanta golpes, humedad y química. Sirve para auto y exteriores moderados.</td><td>Algo más difícil: tiende a dejar hilos.</td></tr>
+  <tr><td><b>ABS</b></td><td>~105 °C</td><td>Calor e impacto de verdad. Es el plástico de los interiores de auto reales.</td><td>Se agrieta y despega sin cámara cerrada. Huele.</td></tr>
+  <tr><td><b>ASA</b></td><td>~105 °C</td><td>Como el ABS pero <b>resistente a los rayos UV</b>: el material de intemperie.</td><td>Los mismos problemas del ABS.</td></tr>
+  <tr><td><b>TPU</b></td><td>flexible</td><td>Goma. Aguanta intemperie y se dobla sin romperse.</td><td>Lento, y <b>el AMS no lo traga</b>: va a mano.</td></tr>
+</table>
+</div>
+
+<h2>Elige para tu pieza</h2>
+
+<p>Responde por el ambiente real, no por el ideal. La herramienta recomienda <strong>el material más fácil que cumple</strong> — porque cada escalón de capacidad se paga en dificultad de impresión.</p>
+
+<div data-decision></div>
+
+<h2>Tres cosas que conviene saber antes de que pasen</h2>
+
+<h3>1. Nada de esto es apto para alimentos por defecto</h3>
+
+<p>Es la pregunta que aparece apenas alguien piensa en imprimir un vaso o un molde. La respuesta corta es <strong>no</strong>, y el motivo no es el plástico sino la geometría: las líneas de capa dejan surcos de <strong>20 a 100 micrones</strong>, y una bacteria mide entre 1 y 5 <a href="https://spoolhound.com/food-safety-guide">(guía de seguridad alimentaria)</a>. Se meten ahí y no salen lavando.</p>
+
+<p>Súmale que el PLA se ablanda a 60 °C: no va al lavavajillas ni aguanta agua hirviendo. La salida real es <a href="https://help.prusa3d.com/article/food-safe-fdm-printing_112313">sellar la pieza con una resina epóxica de grado alimentario</a>, que rellena los surcos y crea una barrera continua. Sin ese paso, sirve para un molde de chocolate de una vez, no para algo que se use a diario.</p>
+
+<h3>2. Cambiar de material puede cambiar la máquina que necesitas</h3>
+
+<p>Aquí se cierra el círculo con la <a href="0002-elegir-la-maquina.html">Lección 2</a>. El ABS y el ASA no fallan por falta de habilidad: se contraen al enfriarse y, si el aire alrededor está frío, la pieza se agrieta entre capas o se despega de la cama. Por eso exigen cámara cerrada. <strong>Elegir "quiero poder imprimir cualquier cosa" es, en la práctica, elegir una máquina cerrada</strong> — no en el papel, sino el día que aparece la pieza que va al auto o al patio.</p>
+
+<h3>3. La orientación no salva un material equivocado</h3>
+
+<p>Lo de la clase pasada sigue siendo cierto, pero opera <em>dentro</em> del material. Una pieza de PLA perfectamente orientada, con las capas alineadas al esfuerzo, igual se dobla sola a 70 °C. Primero el ambiente decide el material; después la orientación exprime lo mejor de él.</p>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://blog.uavmodel.com/3d-printing-filament-guide-pla-petg-abs-tpu-nylon-asa-and-polycarbonate-compared/">UAVMODEL — <em>3D Printing Filament Guide: PLA, PETG, ABS, TPU, Nylon, ASA and Polycarbonate Compared</em></a>. Cubre toda la familia con números concretos de temperatura y resistencia, escrito por gente que fabrica piezas que vuelan — o sea, que sí se rompen si eligen mal.</p>
+  <p>Para el caso puntual, <a href="https://reddit.com/r/3Dprinting">r/3Dprinting</a> responde bien esta pregunta si la haces con contexto: qué es la pieza, dónde va, cuánta carga recibe. "¿PLA o PETG?" a secas no sirve; "¿soporte de cámara que queda en el auto todo el verano?" sí.</p>
+
+  <h3>Llévate esto</h3>
+  <p>La tabla completa, con temperaturas y casos de uso, está en <a href="../reference/materiales.html">reference/materiales.html</a>. Junto con las <a href="../reference/reglas-de-diseno.html">reglas de diseño</a>, son las dos hojas que vale la pena tener impresas.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>El slicer: dónde se toman de verdad todas las decisiones que has aprendido hasta ahora, y los cinco ajustes que importan de los cientos que hay.</li>
+  </ul>
+
+  <div class="ask">
+    <b>Prueba conmigo el caso difícil.</b> Piensa en una pieza que quieras hacer de verdad y dime dónde va a vivir. Si el ambiente es hostil, a veces la respuesta correcta no es cambiar de material sino cambiar el diseño — y eso lo vemos caso a caso.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/decision.js"></script>
+<script>
+  Decide.mount({
+    format: (n) => "dificultad " + n + "/5",
+    verbs: {
+      best: "cumple, y es el más fácil de imprimir",
+      alsoOk: "cumple, pero es más difícil de lo necesario",
+      fail: "no aguanta lo que describiste",
+      head: (n) => `Para esa pieza: <b>${n}</b>`,
+      none: "Ningún material de la lista aguanta todo eso junto. Replantea la pieza o el lugar donde va."
+    },
+    options: [
+      { name: "PLA",  price: 1, specs: { tempC: 55,  tenaz: false, flexible: false, uv: false } },
+      { name: "PETG", price: 2, specs: { tempC: 75,  tenaz: true,  flexible: false, uv: false } },
+      { name: "TPU",  price: 3, specs: { tempC: 60,  tenaz: true,  flexible: true,  uv: true  } },
+      { name: "ABS",  price: 4, specs: { tempC: 105, tenaz: true,  flexible: false, uv: false } },
+      { name: "ASA",  price: 5, specs: { tempC: 105, tenaz: true,  flexible: false, uv: true  } }
+    ],
+    questions: [
+      { q: "¿Dónde va a estar la pieza?",
+        opts: [
+          { t: "Bajo techo, temperatura normal", req: {} },
+          { t: "Auto, sol directo o cerca de calor", req: { tempC: 70 } }
+        ] },
+      { q: "¿Qué esfuerzo recibe?",
+        opts: [
+          { t: "Es decorativa o carga muy poco", req: {} },
+          { t: "Aguanta golpes o peso de verdad", req: { tenaz: true } }
+        ] },
+      { q: "¿Tiene que doblarse?",
+        opts: [
+          { t: "No, necesito que sea rígida", req: {} },
+          { t: "Sí, quiero que ceda como goma", req: { flexible: true } }
+        ] },
+      { q: "¿Queda a la intemperie todo el año?",
+        opts: [
+          { t: "No, siempre bajo techo o adentro", req: {} },
+          { t: "Sí, aguantando sol y lluvia", req: { uv: true } }
+        ] }
+    ],
+    explain: (w) =>
+      w.name === "PLA"
+        ? "Buena noticia: el caso más común es también el más fácil. El PLA es rígido, barato, sin olor e imprime en cualquier máquina — por algo es el material por defecto."
+        : "Cada escalón sobre el PLA se paga en dificultad: más temperatura de boquilla, más cuidado con la adherencia y, desde el ABS en adelante, cámara cerrada. Si puedes reubicar la pieza para que viva en un ambiente más amable, sale más barato que subir de material."
+  });
+
+  Quiz.mount(
+    {
+      q: "Un soporte de teléfono para el auto. ¿Por qué falla en PLA?",
+      opts: [
+        { t: "Se ablanda: el tablero pasa su temperatura",
+          ok: true,
+          fb: "El PLA cede entre 55 y 60 °C y un tablero al sol llega a 70. Se dobla sin recibir un solo golpe." },
+        { t: "Se quiebra: no aguanta el peso del equipo",
+          ok: false,
+          fb: "El PLA es bastante rígido y un teléfono pesa poco. Lo que lo mata es el calor, no la carga." },
+        { t: "Se degrada: el material es biodegradable",
+          ok: false,
+          fb: "El PLA no se descompone en condiciones normales; necesita compostaje industrial. El problema es térmico." }
+      ]
+    },
+    {
+      q: "¿Por qué un vaso impreso no es apto para uso diario?",
+      opts: [
+        { t: "Las líneas de capa retienen bacterias al lavar",
+          ok: true,
+          fb: "Surcos de 20 a 100 micrones contra bacterias de 1 a 5. Se meten ahí y no salen. Sellar con epóxica de grado alimentario lo resuelve." },
+        { t: "El plástico usado siempre es tóxico al beber",
+          ok: false,
+          fb: "El material en crudo suele ser de baja toxicidad. El problema es la superficie porosa, no la química." },
+        { t: "El grosor de pared nunca alcanza a ser seguro",
+          ok: false,
+          fb: "El grosor se puede aumentar sin problema. La porosidad entre capas sigue ahí igual." }
+      ]
+    },
+    {
+      q: "Repaso: una pieza bien orientada en PLA que vive al sol...",
+      opts: [
+        { t: "Igual se deforma: el ambiente manda primero",
+          ok: true,
+          fb: "La orientación exprime lo mejor de un material, pero no cambia su temperatura de reblandecimiento. Primero el ambiente, después la orientación." },
+        { t: "Aguanta bien: las capas alineadas compensan",
+          ok: false,
+          fb: "Alinear capas mejora la resistencia mecánica, no la térmica. A 70 °C el PLA cede orientado o no." },
+        { t: "Depende del relleno que se haya usado dentro",
+          ok: false,
+          fb: "Más relleno es más material blando, no más resistencia al calor. El límite lo pone la transición vítrea." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

@@ -43,6 +43,8 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 
 | 4 | [Cómo pararla en la cama](https://gpilleux.github.io/capas/lessons/0004-como-pararla-en-la-cama.html) | Las capas siempre son horizontales. Cómo la orientación decide resistencia, soportes, acabado y tiempo — con un visualizador que dibuja las capas reales sobre la pieza. |
 
+| 5 | [De qué la hago](https://gpilleux.github.io/capas/lessons/0005-de-que-la-hago.html) | El material no se elige por resistencia sino por dónde va a vivir la pieza. PLA, PETG, ABS, ASA y TPU, con un decisor que recomienda el más fácil que cumple. |
+
 > El curso usa objetos concretos como hilo conductor — un repuesto, un organizador, una figura, un cuadro — porque los conceptos abstractos no se retienen. Ninguno de esos ejemplos es el propósito: la máquina sirve para lo que se te ocurra.
 
 > Van saliendo de a poco. Cada una asume la anterior.
@@ -53,6 +55,7 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 |-----------|----------|
 | [Glosario](https://gpilleux.github.io/capas/reference/glosario.html) | ~37 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
 | [Reglas de diseño](https://gpilleux.github.io/capas/reference/reglas-de-diseno.html) | Los umbrales que deciden si una pieza sale bien: 45°, puentes, anisotropía, tiempo. Una hoja para dejar al lado de la máquina. |
+| [Materiales](https://gpilleux.github.io/capas/reference/materiales.html) | Cuál usar y por qué, ordenados por temperatura de reblandecimiento. Con las advertencias que aplican a todos. |
 
 ## Cómo leerlo
 

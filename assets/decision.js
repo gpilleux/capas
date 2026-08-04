@@ -30,11 +30,24 @@
    - req booleano  → la opción debe tener ese valor exacto.
    - req numérico  → la opción debe tener un valor >= al pedido.
    - req ausente   → no restringe nada.
+
+   El eje de coste (`price`) no tiene por qué ser dinero: es cualquier
+   cosa que quieras minimizar — precio, dificultad, tiempo. Pasa
+   `format` para cambiar cómo se muestra, y `verbs` para cambiar el
+   texto de los veredictos.
    ============================================================ */
 
 const Decide = (() => {
   const money = (n, unit) =>
     "$" + Math.round(n).toLocaleString("es-CL") + (unit ? " " + unit : "");
+
+  const DEFAULT_VERBS = {
+    best: "cumple, y es la más barata que lo hace",
+    alsoOk: "cumple, pero cuesta más",
+    fail: "no cumple lo que pediste",
+    head: (name) => `Para lo que describiste: <b>${name}</b>`,
+    none: "Nada de la lista cumple todo lo que pediste."
+  };
 
   function satisfies(option, reqs) {
     return Object.entries(reqs).every(([k, want]) => {
@@ -48,6 +61,8 @@ const Decide = (() => {
     const host = document.querySelector("[data-decision]");
     if (!host) return;
     const answers = spec.questions.map(() => null);
+    const verbs = { ...DEFAULT_VERBS, ...(spec.verbs || {}) };
+    const fmt = spec.format || ((n) => money(n, spec.unit));
 
     host.className = "widget decision";
     const qWrap = document.createElement("div");
@@ -102,8 +117,8 @@ const Decide = (() => {
           (o) => `<tr class="${o.ok ? "pass" : "fail"}">
             <td>${o.ok ? (o === winner ? "✔" : "·") : "✕"}</td>
             <td>${o.name}</td>
-            <td class="num">${money(o.price)}</td>
-            <td class="why">${o.ok ? (o === winner ? "cumple, y es la más barata que lo hace" : "cumple, pero cuesta más") : "no cumple lo que pediste"}</td>
+            <td class="num">${fmt(o.price)}</td>
+            <td class="why">${o.ok ? (o === winner ? verbs.best : verbs.alsoOk) : verbs.fail}</td>
           </tr>`
         )
         .join("");
@@ -113,14 +128,14 @@ const Decide = (() => {
           ? (() => {
               const ref = spec.options.find((o) => o.name === spec.reference);
               if (!ref || ref.price <= winner.price) return "";
-              return `<p class="decision-delta">Diferencia con ${ref.name}: <b>${money(ref.price - winner.price, spec.unit)}</b></p>`;
+              return `<p class="decision-delta">Diferencia con ${ref.name}: <b>${fmt(ref.price - winner.price)}</b></p>`;
             })()
           : "";
 
       out.innerHTML =
         (winner
-          ? `<p class="decision-head">Para lo que describiste: <b>${winner.name}</b></p>`
-          : `<p class="decision-head">Nada de la lista cumple todo lo que pediste.</p>`) +
+          ? `<p class="decision-head">${verbs.head(winner.name)}</p>`
+          : `<p class="decision-head">${verbs.none}</p>`) +
         `<div class="table-wrap"><table class="decision-table">${rows}</table></div>` +
         delta +
         (winner && spec.explain ? `<p class="decision-note">${spec.explain(winner)}</p>` : "");
