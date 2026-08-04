@@ -60,6 +60,15 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
 - [FlatForge Plugin](https://shop.thehueforge.com/pages/flatforge-plugin)
   Para imprimir boca abajo o a doble cara. Usar para: cuando el acabado de la cara superior no alcance.
 
+### Diseño para impresión
+
+- [Protolabs Network — How does part orientation affect a 3D print?](https://www.hubs.com/knowledge-base/how-does-part-orientation-affect-3d-print/)
+  Los cuatro efectos de la orientación (resistencia, soportes, acabado, tiempo) explicados por un fabricante que imprime piezas para clientes. Usar para: decidir cómo parar cualquier pieza en la cama. Dato clave: XY es 4–5× más resistente que Z.
+- [SelfCAD — La regla de los 45 grados](https://www.selfcad.com/blog/what-is-the-45-degree-rule-in-3d-printing-a-complete-guide) · [3DSourced — Voladizos y puentes](https://www.3dsourced.com/rigid-ink/how-to-print-overhangs-bridges-exeeding-the-45-degree-rule/)
+  El umbral de los voladizos y su excepción, el puente. Usar para: saber si una geometría necesita soportes antes de abrir el slicer.
+- [MLC CAD — Why FDM prints are weaker on the Z axis](https://www.mlc-cad.com/resources/3d-printing/why-fdm-3d-prints-are-weaker-on-the-z-axis-anisotropy-explained/)
+  Por qué existe la anisotropía, a nivel de adhesión entre capas. Usar para: entender el mecanismo, no solo el número.
+
 ### Modelado (CAD)
 
 - [3Dprinting.com — Mejor software CAD para impresión 3D 2026](https://3dprinting.com/software-guides/best-3d-modeling-cad-software/)

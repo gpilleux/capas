@@ -41,6 +41,8 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 | 2 | [Elegir la máquina](https://gpilleux.github.io/capas/lessons/0002-elegir-la-maquina.html) | "¿Cuál compro?" son cuatro preguntas independientes. Cámara cerrada, sistema de movimiento, tipo de AMS y tamaño de cama — con precios reales y un widget que arma el argumento por ti. |
 | 3 | [Anatomía de un cuadro](https://gpilleux.github.io/capas/lessons/0003-anatomia-de-un-cuadro.html) | Cómo cuatro filamentos producen cientos de tonos. Qué es el TD, con un simulador de veladuras, y por qué esta técnica invierte casi todo lo de la Lección 1. |
 
+| 4 | [Cómo pararla en la cama](https://gpilleux.github.io/capas/lessons/0004-como-pararla-en-la-cama.html) | Las capas siempre son horizontales. Cómo la orientación decide resistencia, soportes, acabado y tiempo — con un visualizador que dibuja las capas reales sobre la pieza. |
+
 > El curso usa objetos concretos como hilo conductor — un repuesto, un organizador, una figura, un cuadro — porque los conceptos abstractos no se retienen. Ninguno de esos ejemplos es el propósito: la máquina sirve para lo que se te ocurra.
 
 > Van saliendo de a poco. Cada una asume la anterior.
@@ -49,7 +51,8 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 
 | Documento | Para qué |
 |-----------|----------|
-| [Glosario](https://gpilleux.github.io/capas/reference/glosario.html) | ~28 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
+| [Glosario](https://gpilleux.github.io/capas/reference/glosario.html) | ~37 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
+| [Reglas de diseño](https://gpilleux.github.io/capas/reference/reglas-de-diseno.html) | Los umbrales que deciden si una pieza sale bien: 45°, puentes, anisotropía, tiempo. Una hoja para dejar al lado de la máquina. |
 
 ## Cómo leerlo
 

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reglas de diseño — Impresión 3D</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body { max-width: 44rem; }
+  .rule {
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+    gap: 1rem;
+    padding: .9rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .rule .num {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 1.15rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: right;
+  }
+  .rule .num small { display: block; font-size: .6rem; color: var(--ink-soft); letter-spacing: .06em; font-family: -apple-system, sans-serif; }
+  .rule b { font-size: .95rem; }
+  .rule p { margin: .15rem 0 0; font-size: .85rem; color: var(--ink-soft); line-height: 1.45; }
+  .group {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 2.4rem 0 .3rem;
+  }
+  ol.checklist { padding-left: 1.2rem; font-size: .9rem; }
+  ol.checklist li { margin-bottom: .55rem; }
+  ol.checklist b { display: block; }
+  ol.checklist span { font-size: .84rem; color: var(--ink-soft); }
+  @media print {
+    .rule { break-inside: avoid; }
+    .group { break-after: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<p class="kicker">Referencia · v1</p>
+<h1>Reglas de diseño</h1>
+<p class="dek">Los números y umbrales que deciden si una pieza sale bien. Pensado para imprimir en una hoja y dejarlo al lado de la máquina.</p>
+<p class="meta-line">Actualizado 2026-08-03 · Base: <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="glosario.html">Glosario</a></p>
+
+<div class="callout">
+  <span class="label">La regla maestra</span>
+  <p style="margin-bottom:0"><b>Las capas siempre son horizontales.</b> Girar la pieza no gira las capas: cambia qué dirección de la pieza queda débil, qué superficie queda colgando y cuántas capas hay que apilar.</p>
+</div>
+
+<p class="group">Voladizos y soportes</p>
+
+<div class="rule">
+  <div class="num">45°<small>límite</small></div>
+  <div><b>Inclinación máxima sin soportes</b>
+  <p>Medida respecto de la vertical. A 45° cada capa apoya cerca del 50% sobre la anterior. Una máquina bien afinada y con buena ventilación llega a 55–60°, pero 45° es el número seguro.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">5 mm<small>puente seguro</small></div>
+  <div><b>Tramo horizontal anclado en los dos extremos</b>
+  <p>Hasta 5 mm sale siempre. Con ajustes de ventilador, velocidad y algo de sub-extrusión se llega a 30–50 mm. Es la única excepción legítima a la regla de los 45°.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">90°<small>siempre cae</small></div>
+  <div><b>Voladizo anclado en un solo extremo</b>
+  <p>Mida lo que mida, colapsa. No hay ajuste que lo salve: o se gira la pieza, o van soportes.</p></div>
+</div>
+
+<p class="group">Resistencia</p>
+
+<div class="rule">
+  <div class="num">4–5×<small>XY vs Z</small></div>
+  <div><b>La pieza es mucho más fuerte a lo largo de las capas</b>
+  <p>Dentro de una capa el plástico es continuo; entre capas hay una unión pegada sobre material que ya se enfriaba. Orienta siempre para que la carga corra <em>a lo largo</em>, no atravesando.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">↑<small>relleno</small></div>
+  <div><b>El relleno no arregla una mala orientación</b>
+  <p>Subir el relleno agrega material dentro de cada capa, pero la dirección débil sigue siendo la misma. Una pieza mal orientada al 100% igual se abre por una unión entre capas.</p></div>
+</div>
+
+<p class="group">Precisión y acabado</p>
+
+<div class="rule">
+  <div class="num">○<small>agujeros</small></div>
+  <div><b>Los agujeros salen más redondos con el eje vertical</b>
+  <p>Parados, cada capa los dibuja como círculo completo. Acostados quedan facetados y algo ovalados. Si tienen que calzar con un perno real, la precisión gana sobre el tiempo.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">▬<small>caras</small></div>
+  <div><b>Elige qué cara se va a ver</b>
+  <p>Contra la cama sale lisa y brillante. Hacia arriba sale bien. Sobre soportes queda marcada. Nunca dejes la cara visible apoyada en soportes.</p></div>
+</div>
+
+<p class="group">Tiempo</p>
+
+<div class="rule">
+  <div class="num">↕<small>altura</small></div>
+  <div><b>Manda la altura, no el volumen</b>
+  <p>Lo que cuesta son las capas. La misma pieza puede ser 100 capas acostada y 300 parada: el triple de horas sin cambiar nada más. Bajar la pieza es la optimización más barata que existe.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">½<small>altura de capa</small></div>
+  <div><b>La mitad de altura de capa es el doble de tiempo</b>
+  <p>0,2 mm es lo normal. 0,1 mm se ve mejor y tarda aproximadamente el doble. Vale la pena solo en piezas donde el detalle se note de verdad.</p></div>
+</div>
+
+<p class="group">Antes de darle Slice</p>
+
+<ol class="checklist">
+  <li><b>¿Por dónde tira la fuerza?</b>
+  <span>Orienta para que corra a lo largo de las capas. Si la pieza no recibe carga, sáltalo y optimiza acabado y tiempo.</span></li>
+  <li><b>¿Qué queda colgando?</b>
+  <span>Busca superficies a más de 45°. ¿Se pueden apoyar girando la pieza? Girar es gratis; los soportes cuestan plástico, horas y marcas.</span></li>
+  <li><b>¿Qué cara se va a ver?</b>
+  <span>Contra la cama o hacia arriba. Nunca sobre soportes.</span></li>
+  <li><b>¿Cuántos cambios de color hay?</b>
+  <span>Cada uno purga entre 0,3 y 1,5 g. Agrupar los colores por altura, en vez de salpicarlos, ahorra plástico y horas. Ver <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a>.</span></li>
+</ol>
+
+<div class="footer">
+  <div class="ask">
+    <b>¿Una pieza dudosa?</b> Descríbesela a Claude Code —qué es, cómo se usa, por dónde recibe fuerza— y la orientan juntos antes de gastar filamento.
+  </div>
+</div>
+
+</body>
+</html>

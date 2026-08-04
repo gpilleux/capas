@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 4 — Cómo pararla en la cama</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 4 · Diseño para impresión</p>
+<h1>Cómo pararla en la cama</h1>
+<p class="dek">La misma pieza, el mismo material, el mismo archivo: puede salir sólida en dos horas o partirse a la semana. La diferencia es una decisión que se toma en treinta segundos.</p>
+<p class="meta-line">
+  ~12 minutos · Viene de <a href="0001-una-boquilla-cuatro-colores.html">Lección 1</a> · Referencia: <a href="../reference/reglas-de-diseno.html">reglas de diseño</a> · <a href="../reference/glosario.html">glosario</a>
+</p>
+
+<p>Hasta aquí el curso miró la máquina. Esta clase mira <strong>el objeto</strong>: la habilidad de agarrar cualquier cosa —un repuesto, un soporte, un gancho, una figura— y saber si se puede imprimir, cómo hay que pararla y qué va a fallar si te equivocas.</p>
+
+<p>Todo se apoya en una sola frase.</p>
+
+<div class="callout">
+  <span class="label">La regla que ordena todo lo demás</span>
+  <p style="margin-bottom:0"><strong>Las capas siempre son horizontales.</strong> Sin excepción. Girar la pieza no gira las capas: gira la pieza <em>respecto</em> de ellas. Por eso la orientación no es una preferencia estética — es una decisión estructural.</p>
+</div>
+
+<h2>Una pieza impresa es como la madera</h2>
+
+<p>La madera es fuerte a lo largo de la veta y se raja a lo ancho. Una pieza FDM es igual, y por el mismo motivo: dentro de una capa el plástico es continuo, pero entre una capa y la siguiente hay una <strong>unión</strong> — la capa nueva se pega sobre otra que ya se estaba enfriando.</p>
+
+<p>Los números son brutales: la resistencia a la tracción en el plano XY (a lo largo de las capas) es típicamente <strong>4 a 5 veces mayor</strong> que en Z, atravesándolas <a href="https://www.hubs.com/knowledge-base/how-does-part-orientation-affect-3d-print/">(Protolabs Network)</a>. No es un matiz: es la diferencia entre una pieza que aguanta y una que se abre como un mazo de cartas.</p>
+
+<p class="sidenote">De ahí sale la regla de diseño más rentable que existe: <b>que la fuerza corra a lo largo de las capas, nunca atravesándolas</b>. Antes de orientar, pregúntate por dónde va a tirar la carga.</p>
+
+<h2>Lo que el aire no sostiene</h2>
+
+<p>El plástico sale líquido. Necesita algo debajo. De ahí la <strong>regla de los 45°</strong>: un voladizo inclinado hasta 45° respecto de la vertical se imprime solo, porque a esa inclinación cada capa todavía apoya <a href="https://www.selfcad.com/blog/what-is-the-45-degree-rule-in-3d-printing-a-complete-guide">cerca del 50% sobre la anterior</a>. Más allá de eso, el material cuelga y se cae.</p>
+
+<ul>
+  <li><strong>Hasta 45°</strong> — sale limpio, sin soportes. Una máquina bien afinada y con buena ventilación llega a 55–60°.</li>
+  <li><strong>Puentes</strong> — un tramo horizontal <em>anclado en los dos extremos</em> es la excepción: hasta unos 5 mm es seguro siempre, y con ajustes de ventilador y velocidad se llega a 30–50 mm <a href="https://www.3dsourced.com/rigid-ink/how-to-print-overhangs-bridges-exeeding-the-45-degree-rule/">(3DSourced)</a>.</li>
+  <li><strong>Voladizo puro</strong> — anclado en un solo extremo, a 90°: se cae siempre, mida lo que mida. Ahí no hay truco, hay soportes.</li>
+</ul>
+
+<h2>Pruébalo</h2>
+
+<p>Dos piezas, cada una en dos posiciones. Las líneas claras son las capas reales; la flecha naranja es la fuerza que va a recibir. Mira qué le pasa a las capas cuando giras la pieza.</p>
+
+<div data-orient></div>
+
+<h2>Las cuatro cosas que decides al orientar</h2>
+
+<p>La orientación no elige una virtud: <strong>reparte cuatro a la vez</strong>, y casi nunca se pueden maximizar todas <a href="https://www.hubs.com/knowledge-base/how-does-part-orientation-affect-3d-print/">(Protolabs Network)</a>.</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Decides</th><th>Regla</th></tr>
+  <tr><td><b>Resistencia</b></td><td>La carga debe correr a lo largo de las capas. Atravesarlas cuesta entre 4 y 5 veces la resistencia.</td></tr>
+  <tr><td><b>Soportes</b></td><td>Acostada casi siempre pide menos que parada. Cada soporte es plástico botado, tiempo extra y una marca en la superficie.</td></tr>
+  <tr><td><b>Acabado</b></td><td>La cara contra la cama sale lisa y brillante; las caras hacia arriba salen bien; lo que se imprimió sobre soportes queda marcado. Elige qué cara quieres que se vea.</td></tr>
+  <tr><td><b>Tiempo</b></td><td>Manda la <em>altura</em>, no el volumen. Un cilindro acostado puede ser 100 capas y parado 300: la misma pieza, el triple de horas.</td></tr>
+</table>
+</div>
+
+<div class="callout myth">
+  <span class="label">La excepción que confunde a todo el mundo</span>
+  <p style="margin-bottom:0">Los <strong>agujeros redondos salen más precisos parados</strong> — con el eje vertical, la capa los dibuja como círculo completo. Acostados quedan facetados y algo ovalados, porque los construye por tramos. Es el caso donde la precisión pelea contra el tiempo y contra los soportes: si el agujero tiene que calzar con un perno de verdad, gana la precisión.</p>
+</div>
+
+<h2>El método, en tres preguntas</h2>
+
+<ol>
+  <li><strong>¿Por dónde tira la fuerza?</strong> Orienta para que corra a lo largo de las capas. Si la pieza no recibe carga —algo decorativo—, sáltate esta y optimiza acabado y tiempo.</li>
+  <li><strong>¿Qué queda colgando?</strong> Busca superficies a más de 45°. ¿Se pueden apoyar girando la pieza? Girar es gratis; los soportes no.</li>
+  <li><strong>¿Qué cara se va a ver?</strong> Ponla contra la cama o hacia arriba, nunca sobre soportes.</li>
+</ol>
+
+<p>Tres preguntas, treinta segundos, antes de darle <em>Slice</em>. Es el hábito que separa a alguien que imprime cosas de alguien que imprime cosas <em>que funcionan</em>.</p>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://www.hubs.com/knowledge-base/how-does-part-orientation-affect-3d-print/">Protolabs Network — <em>How does part orientation affect a 3D print?</em></a>. Es la explicación más ordenada de los cuatro efectos a la vez, escrita por un fabricante que imprime piezas reales para clientes, no por un blog de afiliados.</p>
+  <p>Cuando tengas una pieza dudosa, <a href="https://reddit.com/r/3Dprinting">r/3Dprinting</a> es sorprendentemente bueno para esto: sube una foto del modelo diciendo cómo se va a usar y pregunta por la orientación. Es una de las cosas que la comunidad responde mejor y más rápido.</p>
+
+  <h3>Llévate esto</h3>
+  <p>Las reglas de esta clase están comprimidas en <a href="../reference/reglas-de-diseno.html">reference/reglas-de-diseno.html</a>, en una hoja pensada para imprimir y dejar al lado de la máquina.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>Elegir material por pieza: qué va en PLA, qué exige PETG, cuándo aparecen TPU o ABS — y cómo eso cambia la orientación que acabas de aprender.</li>
+  </ul>
+
+  <div class="ask">
+    <b>Esta clase se practica con objetos reales.</b> Mira algo a tu alrededor —un soporte, un gancho, una tapa que se rompió— y descríbemelo. Lo orientamos juntos y te digo qué habría fallado con la otra opción.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/orient.js"></script>
+<script>
+  Orient.mount({
+    cases: [
+      {
+        name: "Tirante con ojal",
+        brief: "Una barra que va a tirar de algo — una correa, un cable, un colgador. La fuerza la estira a lo largo.",
+        orientations: [
+          {
+            label: "Acostado",
+            path: "M40 81 H165 V105 H40 Z",
+            holes: [{ cx: 57, cy: 93, r: 7 }],
+            arrows: [{ x1: 36, y1: 93, x2: 10, y2: 93 }, { x1: 169, y1: 93, x2: 195, y2: 93 }],
+            scores: { Resistencia: 3, Soportes: 3, Acabado: 3, Tiempo: 3 },
+            verdict: "Las capas corren <b>a lo largo</b> de la barra, en la misma dirección que el tirón. La fuerza nunca tiene que separar dos capas: pelea contra plástico continuo. Además es baja, así que se imprime rápido, y no cuelga nada. <b>Gana en las cuatro.</b> El ojal queda algo facetado — el único costo."
+          },
+          {
+            label: "Parado",
+            path: "M88 25 H112 V105 H88 Z",
+            holes: [{ cx: 100, cy: 40, r: 7 }],
+            arrows: [{ x1: 100, y1: 20, x2: 100, y2: 4 }],
+            scores: { Resistencia: 1, Soportes: 3, Acabado: 2, Tiempo: 1 },
+            verdict: "Cuenta las líneas: cada una es una unión entre capas, y el tirón las cruza <b>todas</b>. La pieza se va a abrir por la más débil, con 4 o 5 veces menos resistencia. Encima es alta, o sea lenta. Lo único que mejora es el ojal, que ahora sale redondo de verdad. <b>Mal negocio, salvo que la pieza no reciba carga.</b>"
+          }
+        ]
+      },
+      {
+        name: "Escuadra en L",
+        brief: "Una escuadra de repisa: un brazo se atornilla a la pared, el otro sostiene el peso.",
+        orientations: [
+          {
+            label: "Como se usa",
+            path: "M45 25 H140 V45 H65 V105 H45 Z",
+            arrows: [{ x1: 125, y1: 20, x2: 125, y2: 40 }],
+            flags: [{ x1: 65, x2: 140, y: 47, label: "voladizo a 90°" }],
+            scores: { Resistencia: 2, Soportes: 1, Acabado: 1, Tiempo: 2 },
+            verdict: "Parada como va a quedar instalada, el brazo horizontal queda <b>colgando en el aire</b>: 90° anclado en un solo extremo, o sea que se cae sí o sí. Hay que llenarla de soportes, que después se arrancan y dejan la cara inferior marcada. Es el error clásico: orientar la pieza como se usa, no como se imprime."
+          },
+          {
+            label: "Girada 90°",
+            path: "M45 25 H65 V85 H140 V105 H45 Z",
+            arrows: [{ x1: 125, y1: 80, x2: 125, y2: 60 }],
+            scores: { Resistencia: 2, Soportes: 3, Acabado: 3, Tiempo: 3 },
+            verdict: "La misma pieza, apoyada sobre el brazo largo: <b>ninguna capa queda al aire</b>, cada una se apoya entera en la anterior. Cero soportes, cero marcas, menos altura y menos horas. Girar la pieza fue gratis. <br><small>Para esta pieza lo mejor de todo es acostarla sobre su cara plana —la L completa tocando la cama—, que además pone las capas en el plano del esfuerzo. No se ve en esta vista lateral, pero es la que elegirías en el slicer.</small>"
+          }
+        ]
+      }
+    ]
+  });
+
+  Quiz.mount(
+    {
+      q: "Una pieza va a recibir un tirón fuerte. ¿Cómo la orientas?",
+      opts: [
+        { t: "Con la fuerza corriendo a lo largo de las capas",
+          ok: true,
+          fb: "En XY el plástico es continuo. Atravesando capas, la resistencia cae entre 4 y 5 veces: ahí la pieza se abre por una unión." },
+        { t: "Con la fuerza cruzando capas, que reparten mejor",
+          ok: false,
+          fb: "Es justo lo contrario: cada línea entre capas es una unión, y una unión es siempre más débil que el material entero." },
+        { t: "Da lo mismo: el relleno define la resistencia",
+          ok: false,
+          fb: "El relleno ayuda, pero no cambia la dirección débil. Una pieza mal orientada al 100% de relleno igual se parte por las capas." }
+      ]
+    },
+    {
+      q: "¿Cuál de estas geometrías se imprime sin soportes?",
+      opts: [
+        { t: "Un tramo horizontal anclado en ambos extremos",
+          ok: true,
+          fb: "Eso es un puente: hasta ~5 mm es seguro siempre, y con buenos ajustes llega a 30–50 mm. El anclaje doble lo salva." },
+        { t: "Un brazo horizontal anclado en un solo extremo",
+          ok: false,
+          fb: "Voladizo puro a 90°: se cae mida lo que mida. Es exactamente el caso de la escuadra parada." },
+        { t: "Una pared inclinada 70° respecto de la vertical",
+          ok: false,
+          fb: "Pasa el límite. Hasta 45° es seguro, y una máquina muy afinada llega a 55–60°. A 70° el material cuelga." }
+      ]
+    },
+    {
+      q: "Repaso: ¿qué determina cuánto tarda una impresión?",
+      opts: [
+        { t: "Sobre todo la altura de la pieza en la cama",
+          ok: true,
+          fb: "Manda el número de capas. El mismo cilindro puede ser 100 capas acostado y 300 parado — triple de horas, misma pieza." },
+        { t: "Sobre todo el volumen total de plástico usado",
+          ok: false,
+          fb: "Influye, pero menos de lo que parece: una pieza baja y ancha se imprime rápido aunque pese bastante." },
+        { t: "Sobre todo la cantidad de colores del diseño",
+          ok: false,
+          fb: "Los cambios de color suman tiempo, pero el factor dominante es cuántas capas hay que apilar." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

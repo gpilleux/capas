@@ -381,6 +381,71 @@ table.decision-table tr.pass td:first-child { color: var(--good); font-weight: 7
 .blend-text { margin: 0; font-size: .84rem; line-height: 1.5; }
 .blend-text small { color: var(--ink-soft); font-size: .76rem; }
 
+/* ---------- Visualizador de orientación (ver assets/orient.js) ---------- */
+
+.orient-cases { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .8rem; }
+.orient-case {
+  font: inherit; font-size: .8rem;
+  padding: .35rem .7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.orient-case.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.orient-brief { font-size: .84rem; margin: 0 0 .9rem; color: var(--ink-soft); }
+
+.orient-opts { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .9rem; }
+.orient-opt {
+  font: inherit; font-size: .82rem;
+  padding: .45rem .8rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  flex: 1 1 8rem;
+}
+.orient-opt.on { border-color: var(--accent); background: var(--accent); color: #fff; }
+
+.orient-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+.orient-body { fill: var(--ink-soft); }
+.orient-layer { stroke: var(--paper); stroke-width: 1.1; opacity: .6; }
+.orient-bed { stroke: var(--ink); stroke-width: 2.5; stroke-linecap: round; }
+.orient-arrow { stroke: var(--accent); stroke-width: 2.5; }
+.orient-arrow-head { fill: var(--accent); }
+.orient-flag { stroke: var(--bad); stroke-width: 2.5; stroke-dasharray: 4 3; }
+.orient-flag-t { fill: var(--bad); font-size: 8px; font-family: -apple-system, sans-serif; }
+
+.orient-scores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr));
+  gap: .5rem .9rem;
+  margin: .9rem 0 .2rem;
+}
+.orient-score { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.orient-score .k { font-size: .74rem; color: var(--ink-soft); }
+.orient-score .bar { display: flex; gap: 2px; }
+.orient-score .bar span {
+  width: .8rem; height: .42rem;
+  border-radius: 1px;
+  background: var(--rule);
+}
+.orient-score .bar span.on.s3 { background: var(--good); }
+.orient-score .bar span.on.s2 { background: var(--accent); }
+.orient-score .bar span.on.s1 { background: var(--bad); }
+
+.orient-verdict { font-size: .84rem; line-height: 1.5; margin: .8rem 0 0; }
+
 /* ---------- Pie de lección ---------- */
 
 .footer {
