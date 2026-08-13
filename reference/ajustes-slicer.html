@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ajustes del slicer — Impresión 3D</title>
+<link rel="stylesheet" href="../assets/style.css">
+<style>
+  body { max-width: 44rem; }
+  .rule {
+    display: grid;
+    grid-template-columns: 3.4rem 1fr;
+    gap: 1rem;
+    padding: .9rem 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: baseline;
+  }
+  .rule .num {
+    font-family: "SF Mono", ui-monospace, Menlo, monospace;
+    font-size: 1.05rem;
+    color: var(--accent);
+    font-weight: 600;
+    text-align: right;
+  }
+  .rule .num small { display: block; font-size: .6rem; color: var(--ink-soft); letter-spacing: .06em; font-family: -apple-system, sans-serif; }
+  .rule b { font-size: .95rem; }
+  .rule p { margin: .15rem 0 0; font-size: .85rem; color: var(--ink-soft); line-height: 1.45; }
+  .group {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: .7rem;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 2.4rem 0 .3rem;
+  }
+  ol.checklist { padding-left: 1.2rem; font-size: .9rem; }
+  ol.checklist li { margin-bottom: .55rem; }
+  ol.checklist b { display: block; }
+  ol.checklist span { font-size: .84rem; color: var(--ink-soft); }
+  @media print {
+    .rule { break-inside: avoid; }
+    .group { break-after: avoid; }
+    table { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<p class="kicker">Referencia · v1</p>
+<h1>Ajustes del slicer</h1>
+<p class="dek">Los cinco ajustes que importan, las tres recetas base y qué mirar en el Preview. La hoja para tener al lado de Bambu Studio.</p>
+<p class="meta-line">Actualizado 2026-08-12 · Base: <a href="../lessons/0006-el-compilador-de-plastico.html">Lección 6</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="materiales.html">Materiales</a> · <a href="glosario.html">Glosario</a></p>
+
+<div class="callout">
+  <span class="label">La regla maestra</span>
+  <p style="margin-bottom:0"><b>El slicer decide; la impresora obedece.</b> Todo lo que la pieza va a ser —fuerte, fina, rápida, sostenida— se fija antes de darle <em>Print</em>. Después del Slice solo existe G-code, y el G-code no se negocia.</p>
+</div>
+
+<p class="group">El flujo — seis pasos, siempre los mismos</p>
+
+<ol class="checklist">
+  <li><b>Importar</b> <span>el STL/3MF y orientarlo (ver <a href="reglas-de-diseno.html">reglas de diseño</a>).</span></li>
+  <li><b>Declarar contexto</b> <span>impresora, placa, filamento.</span></li>
+  <li><b>Elegir perfil</b> <span>0,28 borrador · 0,20 estándar · 0,12 fino. Partir siempre de uno.</span></li>
+  <li><b>Ajustar los cinco</b> <span>solo lo que el perfil no sabe de tu pieza (tabla de abajo).</span></li>
+  <li><b>Slice + Preview</b> <span>recorrer capas, leer tiempo y gramos. Nunca saltarse.</span></li>
+  <li><b>Print</b> <span>desde aquí ya nadie decide nada.</span></li>
+</ol>
+
+<p class="group">Los cinco ajustes</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Ajuste</th><th>Gobierna</th><th>Defecto</th><th>Cuándo tocarlo</th></tr>
+  <tr><td><b>Altura de capa</b></td><td>Detalle ↔ tiempo</td><td>0,20 mm</td><td>Se mira de cerca → 0,12 · tosca → 0,28 · cuadro → 0,08</td></tr>
+  <tr><td><b>Paredes</b></td><td>Resistencia</td><td>2</td><td>Carga peso → 4</td></tr>
+  <tr><td><b>Relleno</b></td><td>Plástico y peso</td><td>15%</td><td>Casi nunca; &gt;25–30% no suma resistencia</td></tr>
+  <tr><td><b>Soportes</b></td><td>Voladizos &gt;45°</td><td>Off</td><td>Solo si girar la pieza no lo resuelve</td></tr>
+  <tr><td><b>Brim</b></td><td>Agarre 1.ª capa</td><td>Off</td><td>Piezas altas y flacas; materiales que se despegan</td></tr>
+</table>
+</div>
+
+<p class="group">Las tres recetas base</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Pieza</th><th>Capa</th><th>Paredes</th><th>Relleno</th><th>Lógica</th></tr>
+  <tr><td><b>Funcional</b> (gancho, repuesto, soporte)</td><td>0,20–0,28</td><td>4</td><td>15%</td><td>Fuerza en paredes; a nadie le importa el acabado</td></tr>
+  <tr><td><b>Decorativa</b> (figura, adorno)</td><td>0,12</td><td>2</td><td>10%</td><td>Todo al acabado; no carga nada</td></tr>
+  <tr><td><b>Cuadro</b> (HueForge)</td><td>0,08 (base 0,16)</td><td>2</td><td>100%</td><td>La cara superior es la obra: ni huecos ni escalones</td></tr>
+</table>
+</div>
+
+<p class="group">Números duros</p>
+
+<div class="rule">
+  <div class="num">2→4<small>paredes</small></div>
+  <div><b>La resistencia se compra con paredes, no con relleno</b>
+  <p>"La resistencia de un modelo la define principalmente el número de perímetros" — <a href="https://help.prusa3d.com/article/layers-and-perimeters_1748">Prusa Knowledge Base</a>. Las paredes se imprimen lentas y bien fusionadas; el relleno, rápido y ralo.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">30%<small>techo útil</small></div>
+  <div><b>Sobre 25–30% el relleno ya no suma resistencia</b>
+  <p>Solo engorda gramos y horas. Excepciones legítimas al 100%: cuadros HueForge y piezas que se mecanizan o roscan después.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">½<small>capa = 2× horas</small></div>
+  <div><b>La mitad de altura de capa es el doble de tiempo</b>
+  <p>La misma regla de la <a href="reglas-de-diseno.html">hoja de diseño</a>, vista ahora desde la perilla que la controla.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">80%<small>de la boquilla</small></div>
+  <div><b>Altura de capa máxima ≈ 80% del diámetro de la boquilla</b>
+  <p>Con la boquilla estándar de 0,4 mm, el techo práctico es ~0,32: por eso el perfil borrador es 0,28 y no más.</p></div>
+</div>
+
+<p class="group">Checklist del Preview — antes de Print</p>
+
+<ol class="checklist">
+  <li><b>¿Tiempo y gramos aceptables?</b>
+  <span>Es el número exacto, ya no una estimación. Decide si va hoy o el fin de semana.</span></li>
+  <li><b>¿La primera capa apoya bien?</b>
+  <span>Deslizador en capa 1. La mayoría de las impresiones que fallan, fallan ahí.</span></li>
+  <li><b>¿Los soportes tocan caras visibles?</b>
+  <span>Las van a marcar. Girar la pieza antes que aceptarlos.</span></li>
+  <li><b>¿Cuántos cambios de color?</b>
+  <span>Cada uno purga 0,3–1,5 g. Agrupados por altura salen más baratos que salpicados.</span></li>
+</ol>
+
+<div class="footer">
+  <div class="ask">
+    <b>¿Un Slice con números raros?</b> Pégale a Claude Code el tiempo, los gramos y qué pieza es — y revisan juntos qué perilla lo explica.
+  </div>
+</div>
+
+</body>
+</html>

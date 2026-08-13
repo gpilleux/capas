@@ -446,6 +446,94 @@ table.decision-table tr.pass td:first-child { color: var(--good); font-weight: 7
 
 .orient-verdict { font-size: .84rem; line-height: 1.5; margin: .8rem 0 0; }
 
+/* ---------- Simulador de slicer (ver assets/slice.js) ---------- */
+
+.slice-cases { display: flex; gap: .4rem; flex-wrap: wrap; margin-bottom: .6rem; }
+.slice-case {
+  font: inherit; font-size: .8rem;
+  padding: .35rem .7rem;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: var(--paper);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.slice-case.on { border-color: var(--accent); color: var(--accent); font-weight: 600; }
+
+.slice-brief { font-size: .84rem; margin: 0 0 1rem; color: var(--ink-soft); }
+
+.slice-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+  align-items: start;
+}
+@media (max-width: 34rem) { .slice-grid { grid-template-columns: 1fr; } }
+
+.slice-seg { display: flex; gap: .3rem; margin-bottom: .2rem; }
+.slice-seg button {
+  font: inherit; font-size: .8rem;
+  flex: 1;
+  padding: .4rem .2rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--paper);
+  color: var(--ink);
+  cursor: pointer;
+  line-height: 1.2;
+}
+.slice-seg button small { display: block; font-size: .58rem; color: var(--ink-soft); }
+.slice-seg button.on { border-color: var(--accent); background: var(--accent); color: #fff; }
+.slice-seg button.on small { color: #fff; opacity: .8; }
+
+.slice-val {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  color: var(--accent);
+  font-size: .8rem;
+}
+
+.slice-num {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: 1.35rem;
+  color: var(--accent);
+  margin-bottom: .8rem;
+}
+.slice-num small {
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: .74rem;
+  color: var(--ink-soft);
+  margin-top: .15rem;
+}
+
+.slice-score { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin-bottom: .35rem; }
+.slice-score .k { font-size: .74rem; color: var(--ink-soft); }
+.slice-score .bar { display: flex; gap: 2px; }
+.slice-score .bar span { width: .8rem; height: .42rem; border-radius: 1px; background: var(--rule); }
+.slice-score .bar span.on.s3 { background: var(--good); }
+.slice-score .bar span.on.s2 { background: var(--accent); }
+.slice-score .bar span.on.s1 { background: var(--bad); }
+
+.slice-goals { margin-top: 1rem; display: grid; gap: .3rem; }
+.slice-goal { font-size: .8rem; color: var(--ink-soft); }
+.slice-goal.ok { color: var(--good); }
+.slice-goal.done {
+  color: var(--good);
+  font-weight: 600;
+  border-top: 1px dashed var(--rule);
+  padding-top: .5rem;
+  margin-top: .3rem;
+}
+
+.slice-coach {
+  margin: 1.1rem 0 0;
+  padding-top: .9rem;
+  border-top: 1px dashed var(--rule);
+  font-size: .84rem;
+  line-height: 1.5;
+}
+.slice-fine { font-size: .7rem; color: var(--ink-soft); margin: .7rem 0 0; }
+
 /* ---------- Pie de lección ---------- */
 
 .footer {

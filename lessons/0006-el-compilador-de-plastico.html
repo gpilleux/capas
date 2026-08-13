@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 6 — El compilador de plástico</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 6 · El slicer</p>
+<h1>El compilador de plástico</h1>
+<p class="dek">Cinco lecciones tomando decisiones. Hoy conoces el programa donde se escriben todas.</p>
+<p class="meta-line">
+  ~15 minutos · Viene de <a href="0005-de-que-la-hago.html">Lección 5</a> · Referencia: <a href="../reference/ajustes-slicer.html">ajustes del slicer</a> · <a href="../reference/glosario.html">glosario</a>
+</p>
+
+<p>Un modelo 3D describe una <em>forma</em>. No dice a qué temperatura fundir, cuán gruesas hacer las capas, qué poner dentro de la pieza ni dónde sostener los voladizos. Todo eso lo decide el <strong>slicer</strong> — para el P2S, <a href="https://wiki.bambulab.com/en/x1/manual/introduction-to-bambu-studio">Bambu Studio</a> — y lo compila en <strong>G-code</strong>: la lista literal de movimientos que la impresora ejecuta sin entender qué está imprimiendo.</p>
+
+<p>Para tu perfil, la analogía es exacta:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>En software</th><th>En impresión</th></tr>
+  <tr><td>Código fuente</td><td>El modelo (STL / 3MF)</td></tr>
+  <tr><td>Flags del compilador</td><td>El perfil (0,28 borrador · 0,20 estándar · 0,12 fino)</td></tr>
+  <tr><td>Compilar</td><td><em>Slice</em></td></tr>
+  <tr><td>Revisar el output antes de desplegar</td><td>La pestaña <em>Preview</em></td></tr>
+  <tr><td>El binario</td><td>El G-code</td></tr>
+  <tr><td>La CPU: obedece sin entender</td><td>La impresora</td></tr>
+</table>
+</div>
+
+<div class="sidenote">Existe también <b>Orca Slicer</b>, un fork comunitario de Bambu Studio con más perillas. Mismo motor, misma lógica: todo lo de esta lección aplica igual.</div>
+
+<h2>El flujo completo, seis pasos</h2>
+
+<div class="pipeline">
+  <div class="step"><span class="n">1</span><div><b>Importar</b><p>Arrastras el STL o 3MF a la mesa virtual. Aquí aplicas la <a href="0004-como-pararla-en-la-cama.html">orientación de la Lección 4</a>: el slicer gira la pieza, no las capas.</p></div></div>
+  <div class="step"><span class="n">2</span><div><b>Declarar el contexto</b><p>Impresora, placa y filamento. El mismo modelo compila distinto para cada máquina y cada material — como cambiar de arquitectura de destino.</p></div></div>
+  <div class="step"><span class="n">3</span><div><b>Elegir perfil</b><p>Paquetes de ajustes probados por el fabricante: 0,28 mm borrador, 0,20 mm estándar, 0,12 mm fino. Se parte de uno, no de cero.</p></div></div>
+  <div class="step"><span class="n">4</span><div><b>Ajustar lo que el perfil no sabe</b><p>El perfil no conoce tu pieza: si carga peso, si se mira de cerca, si tiene voladizos. Eso son los cinco ajustes de abajo.</p></div></div>
+  <div class="step"><span class="n">5</span><div><b>Slice y leer el Preview</b><p>Compila y muestra el resultado capa por capa, con tiempo y gramos exactos. Es tu revisión de código: nunca se salta.</p></div></div>
+  <div class="step"><span class="n">6</span><div><b>Print</b><p>El G-code viaja por Wi-Fi a la máquina. Desde este punto ya nadie decide nada: solo se ejecuta.</p></div></div>
+</div>
+
+<h2>Cientos de ajustes, cinco que importan</h2>
+
+<p>Bambu Studio expone cientos de parámetros. Para el 95% de las piezas se tocan estos cinco; el resto ya viene bien en el perfil:</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Ajuste</th><th>Gobierna</th><th>Por defecto</th><th>Cuándo tocarlo</th></tr>
+  <tr><td><b>Altura de capa</b></td><td>Detalle ↔ tiempo</td><td>0,20 mm</td><td>Se mira de cerca → 0,12. Pieza tosca → 0,28.</td></tr>
+  <tr><td><b>Paredes</b> <span class="mono">walls</span></td><td>Resistencia</td><td>2</td><td>Carga peso de verdad → 4.</td></tr>
+  <tr><td><b>Relleno</b> <span class="mono">infill</span></td><td>Plástico y peso</td><td>15%</td><td>Casi nunca. Sobre 25–30% ya no suma resistencia.</td></tr>
+  <tr><td><b>Soportes</b></td><td>Voladizos &gt;45°</td><td>Apagados</td><td>Cuando el Preview muestre algo colgando que no se arregla girando la pieza.</td></tr>
+  <tr><td><b>Brim</b></td><td>Agarre de la 1.ª capa</td><td>Apagado</td><td>Piezas altas y flacas, o materiales que se despegan.</td></tr>
+</table>
+</div>
+
+<div class="callout myth">
+  <span class="label">El mito que gasta más plástico del mundo</span>
+  <p style="margin-bottom:0">"Más relleno = más fuerte." La documentación de Prusa lo dice sin rodeos: <a href="https://help.prusa3d.com/article/layers-and-perimeters_1748">la resistencia de un modelo la define principalmente el número de perímetros, no el relleno</a>. Las paredes se imprimen lento y bien fusionadas; el relleno, rápido y ralo. Pasar de 2 a 4 paredes transforma la pieza; <a href="https://clevercreations.org/what-is-strongest-infill-pattern-cura-prusa/">pasar el relleno de 30% arriba engorda la impresión sin volverla más fuerte</a>.</p>
+</div>
+
+<h2>Tu primer slicer: tres piezas, tres recetas</h2>
+
+<p>Mismo tablero de control, tres piezas distintas. Cada una tiene metas: muévele a los ajustes hasta cumplirlas todas, y fíjate en qué le hace cada perilla al tiempo y a los gramos.</p>
+
+<div class="widget slice" data-slice></div>
+
+<p>Lo que acabas de hacer —mirar la pieza, decidir qué le importa, pagar solo por eso— es exactamente el trabajo frente al slicer real. Las tres recetas quedan anotadas en la <a href="../reference/ajustes-slicer.html">hoja de referencia</a>.</p>
+
+<h2>El Preview: la revisión antes del merge</h2>
+
+<p>Tras el <em>Slice</em>, el Preview muestra la pieza rebanada de verdad: puedes recorrerla capa por capa con un deslizador. Antes de darle <em>Print</em>, se revisan cuatro cosas:</p>
+
+<ul>
+  <li><strong>Tiempo y gramos</strong> — el número exacto, ya no una estimación. Aquí decides si el cuadro de 7 horas va hoy o el fin de semana.</li>
+  <li><strong>La primera capa</strong> — capa 1 del deslizador: ¿apoya suficiente superficie? La mayoría de las impresiones que fallan, fallan ahí.</li>
+  <li><strong>Dónde cayeron los soportes</strong> — si tocan una cara visible, la van a marcar: gira la pieza antes que aceptarlos.</li>
+  <li><strong>Los cambios de color</strong> — en multicolor, cuánta purga suma cada uno (<a href="0001-una-boquilla-cuatro-colores.html">Lección 1</a>).</li>
+</ul>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p><a href="https://wiki.bambulab.com/en/x1/manual/introduction-to-bambu-studio">Bambu Lab Wiki — <em>Introduction to Bambu Studio</em></a>, la documentación oficial del programa que van a usar. Para el fundamento de capas y perímetros, <a href="https://help.prusa3d.com/article/layers-and-perimeters_1748">Prusa Knowledge Base — <em>Layers and perimeters</em></a> es la explicación más seria que existe, y vale para cualquier slicer.</p>
+
+  <h3>La tarea que no necesita impresora</h3>
+  <p><strong>Bambu Studio es gratis y corre sin máquina.</strong> Instálalo hoy: <a href="https://bambulab.com/en/download/studio">bambulab.com/download/studio</a>. Baja cualquier modelo de <a href="https://makerworld.com/">MakerWorld</a>, dale <em>Slice</em> con el perfil estándar y recorre el Preview capa por capa. Es el paso 1 al 5 del flujo completo — todo menos apretar <em>Print</em>. El día que la impresora llegue, ya vas a saber usarla.</p>
+
+  <h3>Llévate esto</h3>
+  <p>Los cinco ajustes, las tres recetas y el checklist del Preview están en <a href="../reference/ajustes-slicer.html">reference/ajustes-slicer.html</a> — la tercera hoja imprimible del curso, junto a <a href="../reference/reglas-de-diseno.html">reglas de diseño</a> y <a href="../reference/materiales.html">materiales</a>.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>La primera pieza propia: modelar algo simple con medidas reales y llevarlo hasta la placa. Desde ahí queda un paso a la ruta código → modelo → impresión.</li>
+  </ul>
+
+  <div class="ask">
+    <b>Cuando hagas la tarea, vuelve con los números.</b> Dime qué modelo elegiste y el tiempo y los gramos que te dio el Slice — y leemos el Preview juntos: qué tocaría, qué dejaría, y por qué.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/slice.js"></script>
+<script>
+  Slice.mount({
+    cases: [
+      {
+        name: "Gancho de pared",
+        brief: "Cuelga una mochila de 5 kg. Nadie lo mira de cerca; no se puede romper.",
+        H: 60, As: 50, Vi: 20, base: 3,
+        start: { lh: 0.2, walls: 2, infill: 15 },
+        goals: [
+          { t: "Aguanta los 5 kg (resistencia ≥ 4)", test: (s, c) => c.strength >= 4 },
+          { t: "Sale en menos de 1 hora", test: (s, c) => c.secs <= 3600 }
+        ],
+        coach: (s, c) => {
+          if (c.strength < 4 && s.infill > 25)
+            return "Estás pagando gramos y minutos en relleno que ya no suma. La resistencia vive en las paredes: devuelve el relleno a 15% y sube paredes.";
+          if (c.strength < 4)
+            return "Con " + s.walls + " paredes esto se quiebra con la mochila. Súbelas — es el ajuste que más resistencia da por gramo invertido.";
+          if (c.secs > 3600)
+            return "Ya aguanta; ahora sobra calidad. Nadie mira un gancho de cerca: capa 0,28 borrador y el tiempo se desploma.";
+          return "Receta de pieza funcional: paredes arriba, capa gorda, relleno quieto. Compara los gramos contra la configuración inicial: la fuerza salió casi gratis.";
+        }
+      },
+      {
+        name: "Figura decorativa",
+        brief: "Un búho de 10 cm para la repisa. No carga nada; se mira de cerca.",
+        H: 100, As: 120, Vi: 180, base: 5,
+        start: { lh: 0.2, walls: 2, infill: 15 },
+        goals: [
+          { t: "Las líneas de capa no se notan (detalle ≥ 4)", test: (s, c) => c.detail >= 4 },
+          { t: "Gasta 45 g de filamento o menos", test: (s, c) => c.grams <= 45 }
+        ],
+        coach: (s, c) => {
+          if (c.detail < 4)
+            return "A 0," + String(s.lh).slice(2).padEnd(2, "0") + " las líneas se ven como escalones en las curvas. Para algo que se mira de cerca, baja la altura de capa.";
+          if (c.grams > 45)
+            return "No carga nada: está gastando plástico en músculo que nadie le pedirá. Relleno a 10% y 2 paredes bastan de sobra.";
+          return "Y mira lo que le pasó al tiempo al bajar la capa: esa hora extra es el precio del detalle. Se paga solo cuando se nota — prueba 0,08 y verás la regla del doble en acción.";
+        }
+      },
+      {
+        name: "El cuadro",
+        brief: "Un HueForge de 15 cm. Plano, 3 mm de espesor: la cara superior es la obra.",
+        H: 3, As: 2, Vi: 65, base: 0,
+        start: { lh: 0.2, walls: 2, infill: 15 },
+        goals: [
+          { t: "Cada tono cambia en una capa (capa 0,08)", test: (s) => s.lh === 0.08 },
+          { t: "Cara superior sólida, sin huecos (relleno 100%)", test: (s) => s.infill === 100 }
+        ],
+        coach: (s, c) => {
+          if (s.lh > 0.08)
+            return "En un cuadro los colores cambian por capa: con capa gruesa los degradés se escalonan. Aquí la capa extra fina no es lujo, es el mecanismo.";
+          if (s.infill < 100)
+            return "Cualquier hueco bajo la superficie se marca en la obra. El cuadro es la excepción a todo lo anterior: relleno al 100%.";
+          return "Casi 7 horas para 3 mm de alto: el tiempo no viene de apilar capas sino de rellenar cada una por completo. Mismo tablero que el gancho, receta opuesta.";
+        }
+      }
+    ]
+  });
+
+  Quiz.mount(
+    {
+      q: "Tu repisa impresa se dobla con el peso de los libros. ¿Qué subes primero?",
+      opts: [
+        { t: "Las paredes: la resistencia vive en el contorno",
+          ok: true,
+          fb: "Prusa lo dice sin rodeos: la resistencia la define el número de perímetros. De 2 a 4 paredes transforma la pieza; el relleno sobre 30% ya no suma." },
+        { t: "El relleno: más plástico adentro, más firmeza",
+          ok: false,
+          fb: "Es lo intuitivo y es lo caro: pagas gramos y horas para ganar poco. El relleno se imprime rápido y ralo; las paredes, lentas y bien fusionadas." },
+        { t: "La altura de capa: capas finas se pegan mejor",
+          ok: false,
+          fb: "La altura de capa gobierna detalle y tiempo, no resistencia. Capas más finas hacen la repisa más bonita, no más firme." }
+      ]
+    },
+    {
+      q: "Bajas la altura de capa de 0,2 a 0,1 mm. ¿Qué obtienes a cambio?",
+      opts: [
+        { t: "El doble de capas y cerca del doble de horas",
+          ok: true,
+          fb: "Cada rebanada mide la mitad, así que hay que apilar el doble. Es la regla ½ de la hoja de diseño: el detalle se paga en tiempo, casi lineal." },
+        { t: "El doble de resolución sin costo apreciable",
+          ok: false,
+          fb: "El costo es muy apreciable: el doble de capas es cerca del doble de tiempo. Por eso 0,12 se reserva para lo que se mira de cerca." },
+        { t: "Una pieza el doble de fuerte entre sus capas",
+          ok: false,
+          fb: "Más interfaces entre capas no es más fuerza — la unión entre capas sigue siendo el punto débil. La resistencia se compra con paredes." }
+      ]
+    },
+    {
+      q: "A mitad de impresión te arrepientes del relleno que elegiste. ¿Puedes cambiarlo?",
+      opts: [
+        { t: "No: el G-code ya está escrito y solo se obedece",
+          ok: true,
+          fb: "La impresora no sabe qué está imprimiendo: ejecuta la lista de movimientos línea a línea, como una CPU. Todo se decide antes de darle Print — por eso el Preview nunca se salta." },
+        { t: "Sí: la impresora recalcula el interior en vivo",
+          ok: false,
+          fb: "No hay nada que recalcular: dentro de la máquina no existe el modelo, solo movimientos ya compilados. El slicer decidió todo antes." },
+        { t: "Sí: pero solo si aún no cerró la última capa",
+          ok: false,
+          fb: "Suena plausible, pero no: el G-code es inmutable desde el Slice. Lo único que puedes hacer a mitad de camino es pausar o cancelar." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

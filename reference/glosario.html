@@ -46,10 +46,10 @@
 </head>
 <body>
 
-<p class="kicker">Referencia · v5</p>
+<p class="kicker">Referencia · v6</p>
 <h1>Glosario</h1>
 <p class="dek">El vocabulario mínimo para entrar a una conversación de impresión 3D sin quedar afuera. Toda lección de este curso usa estos términos exactamente con este significado.</p>
-<p class="meta-line">Actualizado 2026-08-03 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a> · <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a> · <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="../lessons/0005-de-que-la-hago.html">Lección 5</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="materiales.html">Materiales</a></p>
+<p class="meta-line">Actualizado 2026-08-12 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a> · <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a> · <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="../lessons/0005-de-que-la-hago.html">Lección 5</a> · <a href="../lessons/0006-el-compilador-de-plastico.html">Lección 6</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="materiales.html">Materiales</a> · <a href="ajustes-slicer.html">Ajustes del slicer</a></p>
 
 <p class="group">La tecnología</p>
 <dl>
@@ -134,7 +134,16 @@
 <dd>El grosor de cada rebanada, típicamente 0,2&nbsp;mm. Es el control maestro de la disyuntiva calidad/tiempo: la mitad de altura es el doble de capas y aproximadamente el doble de horas.</dd>
 
 <dt>Relleno <span class="en">infill</span></dt>
-<dd>Las piezas son huecas por dentro, con una retícula de refuerzo. Un 15% de relleno es lo normal; subirlo cuesta plástico y horas.</dd>
+<dd>Las piezas son huecas por dentro, con una retícula de refuerzo. Un 15% de relleno es lo normal; subirlo cuesta plástico y horas, y <b>sobre 25–30% ya no suma resistencia</b>. Ver <a href="ajustes-slicer.html">ajustes del slicer</a>.</dd>
+
+<dt>Paredes <span class="en">walls / perimeters</span></dt>
+<dd>Las vueltas de contorno que cierran cada capa; lo de adentro es relleno. <b>La resistencia de la pieza la definen ellas</b>, no el relleno: se imprimen lento y bien fusionadas. El defecto es 2; una pieza que carga peso pide 4. Ver <a href="../lessons/0006-el-compilador-de-plastico.html">Lección 6</a>.</dd>
+
+<dt>Perfil <span class="en">preset / profile</span></dt>
+<dd>Paquete de ajustes probados por el fabricante del que se parte en el slicer: 0,28 borrador, 0,20 estándar, 0,12 fino. Se elige uno y se tocan solo los ajustes que el perfil no puede saber de la pieza.</dd>
+
+<dt>Preview <span class="en">vista previa</span></dt>
+<dd>La pestaña del slicer que muestra el resultado del <em>Slice</em> capa por capa, con tiempo y gramos exactos. Es la revisión antes de imprimir: primera capa, soportes sobre caras visibles, cambios de color. No se salta.</dd>
 
 <dt>Soportes <span class="en">supports</span></dt>
 <dd>Estructuras desechables que sostienen los voladizos mientras se imprimen. Se rompen y se botan. Diseñar para evitarlos es una habilidad en sí misma.</dd>

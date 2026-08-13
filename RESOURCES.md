@@ -60,6 +60,17 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
 - [FlatForge Plugin](https://shop.thehueforge.com/pages/flatforge-plugin)
   Para imprimir boca abajo o a doble cara. Usar para: cuando el acabado de la cara superior no alcance.
 
+### El slicer
+
+- [Bambu Lab Wiki — Introduction to Bambu Studio](https://wiki.bambulab.com/en/x1/manual/introduction-to-bambu-studio)
+  Documentación oficial del slicer que van a usar. Usar para: el flujo importar → perfil → Slice → Preview → Print y cualquier duda de interfaz. *Nota: el wiki bloquea scrapers; abrir en navegador.*
+- [Prusa Knowledge Base — Layers and perimeters](https://help.prusa3d.com/article/layers-and-perimeters_1748)
+  **Verificado 2026-08-12.** La fuente del dato central de la Lección 6: "la resistencia de un modelo la define principalmente el número de perímetros (no el relleno)". También: altura de capa máxima ≈ 80% del diámetro de boquilla, mínimo 3 capas sólidas superiores. Vale para cualquier slicer.
+- [Clever Creations — The Strongest Infill Pattern](https://clevercreations.org/what-is-strongest-infill-pattern-cura-prusa/)
+  Comparativa de patrones de relleno con el dato práctico clave: sobre 25–30% de relleno la resistencia casi no sube, y las paredes aportan más que el patrón. Usar para: no gastar plástico en relleno inútil.
+- [Bambu Lab — descarga de Bambu Studio](https://bambulab.com/en/download/studio)
+  Gratis, corre sin impresora. Usar para: la tarea de la Lección 6 — practicar el flujo completo antes de que exista la máquina.
+
 ### Diseño para impresión
 
 - [Protolabs Network — How does part orientation affect a 3D print?](https://www.hubs.com/knowledge-base/how-does-part-orientation-affect-3d-print/)
