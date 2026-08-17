@@ -40,10 +40,10 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 | 1 | [Una boquilla, cuatro colores](https://gpilleux.github.io/capas/lessons/0001-una-boquilla-cuatro-colores.html) | Por qué una impresora "multicolor" no imprime varios colores a la vez, qué cuesta cada cambio de color, y qué compras realmente cuando compras un AMS. |
 | 2 | [Elegir la máquina](https://gpilleux.github.io/capas/lessons/0002-elegir-la-maquina.html) | "¿Cuál compro?" son cuatro preguntas independientes. Cámara cerrada, sistema de movimiento, tipo de AMS y tamaño de cama — con precios reales y un widget que arma el argumento por ti. |
 | 3 | [Anatomía de un cuadro](https://gpilleux.github.io/capas/lessons/0003-anatomia-de-un-cuadro.html) | Cómo cuatro filamentos producen cientos de tonos. Qué es el TD, con un simulador de veladuras, y por qué esta técnica invierte casi todo lo de la Lección 1. |
-
 | 4 | [Cómo pararla en la cama](https://gpilleux.github.io/capas/lessons/0004-como-pararla-en-la-cama.html) | Las capas siempre son horizontales. Cómo la orientación decide resistencia, soportes, acabado y tiempo — con un visualizador que dibuja las capas reales sobre la pieza. |
-
 | 5 | [De qué la hago](https://gpilleux.github.io/capas/lessons/0005-de-que-la-hago.html) | El material no se elige por resistencia sino por dónde va a vivir la pieza. PLA, PETG, ABS, ASA y TPU, con un decisor que recomienda el más fácil que cumple. |
+| 6 | [El compilador de plástico](https://gpilleux.github.io/capas/lessons/0006-el-compilador-de-plastico.html) | El slicer: donde todas las decisiones anteriores se vuelven perillas. El flujo de seis pasos, los cinco ajustes que importan, y un simulador con tres piezas y tres recetas. |
+| 7 | [Hola, mundo físico](https://gpilleux.github.io/capas/lessons/0007-hola-mundo-fisico.html) | La primera pieza propia, escrita en OpenSCAD. Por qué un agujero impreso sale más chico que su modelo, y cómo se diseña la holgura según el calce — con un simulador de tres calces. |
 
 > El curso usa objetos concretos como hilo conductor — un repuesto, un organizador, una figura, un cuadro — porque los conceptos abstractos no se retienen. Ninguno de esos ejemplos es el propósito: la máquina sirve para lo que se te ocurra.
 
@@ -56,6 +56,7 @@ El resultado son **lecciones cortas en HTML**, cada una autocontenida, cada una 
 | [Glosario](https://gpilleux.github.io/capas/reference/glosario.html) | ~37 términos, del *hotend* al *Transmission Distance*. Lo que se consulta, no lo que se memoriza. |
 | [Reglas de diseño](https://gpilleux.github.io/capas/reference/reglas-de-diseno.html) | Los umbrales que deciden si una pieza sale bien: 45°, puentes, anisotropía, tiempo. Una hoja para dejar al lado de la máquina. |
 | [Materiales](https://gpilleux.github.io/capas/reference/materiales.html) | Cuál usar y por qué, ordenados por temperatura de reblandecimiento. Con las advertencias que aplican a todos. |
+| [Ajustes del slicer](https://gpilleux.github.io/capas/reference/ajustes-slicer.html) | El flujo de seis pasos, los cinco ajustes que importan y las tres recetas del simulador. El checklist antes de darle Print. |
 
 ## Cómo leerlo
 
