@@ -534,6 +534,35 @@ table.decision-table tr.pass td:first-child { color: var(--good); font-weight: 7
 }
 .slice-fine { font-size: .7rem; color: var(--ink-soft); margin: .7rem 0 0; }
 
+/* ---------- Simulador de calces (ver assets/fit.js) ---------- */
+
+.fit-vis {
+  width: 100%;
+  height: auto;
+  display: block;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  margin-bottom: .8rem;
+}
+.fit-nominal { fill: none; stroke: var(--rule); stroke-width: 1.5; stroke-dasharray: 3 3; }
+.fit-hole { fill: none; stroke: var(--ink-soft); stroke-width: 2; }
+.fit-mate { fill: var(--accent); opacity: .85; }
+.fit-mate.bad { fill: var(--bad); }
+.fit-tag { fill: var(--ink-soft); font-size: 8.5px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+
+.fit-code pre { margin: .8rem 0 0; font-size: .68rem; }
+
+.fit-read {
+  font-family: "SF Mono", ui-monospace, Menlo, monospace;
+  font-size: .78rem;
+  color: var(--ink-soft);
+  display: grid;
+  gap: .2rem;
+  margin-bottom: .9rem;
+}
+.fit-read b { color: var(--accent); font-weight: 600; }
+
 /* ---------- Pie de lección ---------- */
 
 .footer {

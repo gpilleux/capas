@@ -91,6 +91,15 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
 - [SpoolHound — Food safety guide](https://spoolhound.com/food-safety-guide)
   El detalle del problema: surcos de 20–100 micrones contra bacterias de 1–5. Usar para: entender por qué lavar no basta.
 
+### Holguras y calces
+
+- [goodprints3d — Why Do 3D Printed Holes Come Out Too Small, and How Do You Fix Them?](https://www.goodprints3d.com/blogs/3d/why-do-3d-printed-holes-come-out-too-small-and-how-do-you-fix-them)
+  **Verificado 2026-08-16.** Los mecanismos por los que un agujero impreso sale más chico (cordón que abulta hacia adentro, contracción hacia el centro, cuerdas de los segmentos) y la doctrina correcta: probeta primero, compensación en CAD después. Usar para: la Lección 7 y cualquier pieza que deba calzar.
+- [3DPut — Complete Guide to 3D Printing Tolerances and Fit](https://3dput.com/complete-guide-to-3d-printing-tolerances-and-fit-getting-perfect-clearance-for-moving-parts/)
+  **Verificado 2026-08-16.** La tabla de holguras de partida para FDM de escritorio (boquilla 0,4, PLA/PETG): press −0,1/−0,2 · justo 0–0,1 · deslizante 0,2–0,4 · libre 0,5–1,0. Usar para: el bloque de parámetros de toda pieza funcional.
+- [AON3D — Engineering Fits: How to Design for 3D Printed Assemblies](https://www.aon3d.com/applications/engineering-fits-how-to-design-for-3d-printed-assemblies/)
+  **Verificado 2026-08-16.** Perspectiva de fabricante industrial: ISO 286 no aplica a FDM, regla de 1–2× el ancho de extrusión, crush ribs para interferencias. Usar para: entender por qué la holgura se mide y no se hereda de una norma.
+
 ### Modelado (CAD)
 
 - [3Dprinting.com — Mejor software CAD para impresión 3D 2026](https://3dprinting.com/software-guides/best-3d-modeling-cad-software/)
@@ -103,6 +112,8 @@ Fuentes verificadas para este curso. Todo lo que se afirme en una lección debe 
   CAD paramétrico en Python sobre el kernel OpenCascade. Usar para: la ruta "modelos desde código".
 - [OpenSCAD](https://openscad.org/)
   Modelado 100% declarativo por código. Usar para: la vía más directa a que un agente genere geometría.
+- [OpenSCAD Cheat Sheet](https://openscad.org/cheatsheet/) · [Documentación oficial](https://openscad.org/documentation.html)
+  **Verificado 2026-08-16.** Todo el lenguaje en una pantalla: primitivas (`cube`, `cylinder`), booleanas (`difference`, `union`), transformaciones y `$fn`. Usar para: la referencia permanente de la Lección 7 en adelante.
 
 ### Modelos desde Claude Code
 

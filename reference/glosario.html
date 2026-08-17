@@ -46,10 +46,10 @@
 </head>
 <body>
 
-<p class="kicker">Referencia · v6</p>
+<p class="kicker">Referencia · v7</p>
 <h1>Glosario</h1>
 <p class="dek">El vocabulario mínimo para entrar a una conversación de impresión 3D sin quedar afuera. Toda lección de este curso usa estos términos exactamente con este significado.</p>
-<p class="meta-line">Actualizado 2026-08-12 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a> · <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a> · <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="../lessons/0005-de-que-la-hago.html">Lección 5</a> · <a href="../lessons/0006-el-compilador-de-plastico.html">Lección 6</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="materiales.html">Materiales</a> · <a href="ajustes-slicer.html">Ajustes del slicer</a></p>
+<p class="meta-line">Actualizado 2026-08-16 · Se amplía con cada lección · <a href="../lessons/0001-una-boquilla-cuatro-colores.html">Lección 1</a> · <a href="../lessons/0002-elegir-la-maquina.html">Lección 2</a> · <a href="../lessons/0003-anatomia-de-un-cuadro.html">Lección 3</a> · <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="../lessons/0005-de-que-la-hago.html">Lección 5</a> · <a href="../lessons/0006-el-compilador-de-plastico.html">Lección 6</a> · <a href="../lessons/0007-hola-mundo-fisico.html">Lección 7</a> · <a href="reglas-de-diseno.html">Reglas de diseño</a> · <a href="materiales.html">Materiales</a> · <a href="ajustes-slicer.html">Ajustes del slicer</a></p>
 
 <p class="group">La tecnología</p>
 <dl>
@@ -197,6 +197,32 @@
 
 <dt>Litofanía <span class="en">lithophane</span></dt>
 <dd>El primo monocromo del cuadro HueForge: una placa blanca de espesor variable que revela una imagen solo al ponerle luz detrás.</dd>
+
+</dl>
+
+<p class="group">La pieza propia</p>
+<dl>
+
+<dt>CAD <span class="en">Computer-Aided Design</span></dt>
+<dd>El software donde se crea el modelo 3D. Puede ser visual (Tinkercad, Fusion) o por código (OpenSCAD, build123d). Este curso entra por el código.</dd>
+
+<dt>Paramétrico</dt>
+<dd>Un modelo cuyas medidas son <b>variables con nombre</b>, no números sueltos: cambias el parámetro y toda la geometría se recalcula. Es la diferencia entre un modelo y un dibujo. Ver <a href="../lessons/0007-hola-mundo-fisico.html">Lección 7</a>.</dd>
+
+<dt>OpenSCAD</dt>
+<dd>CAD 100% declarativo: la forma se programa con primitivas (<span class="mono">cube</span>, <span class="mono">cylinder</span>) y operaciones booleanas (<span class="mono">difference</span>, <span class="mono">union</span>). F5 previsualiza, F6 renderiza y exporta el STL.</dd>
+
+<dt>Holgura <span class="en">clearance</span></dt>
+<dd>El aire deliberado entre dos piezas que deben calzar. Se suma en el CAD: compensación por lo que la impresión achica el agujero (0,2–0,5 mm) más el juego funcional del calce. <b>Se diseña, no se hereda del modelo.</b> Ver <a href="../lessons/0007-hola-mundo-fisico.html">Lección 7</a>.</dd>
+
+<dt>Calce <span class="en">fit</span></dt>
+<dd>Cómo quedan dos piezas una dentro de la otra: <b>apretado</b> (no sale más), <b>justo</b> (entra con el pulgar), <b>deslizante</b> (se mueve suave) o <b>libre</b> (pasa sin tocar). Cada uno pide su holgura; la tabla está en las <a href="reglas-de-diseno.html">reglas de diseño</a>.</dd>
+
+<dt>Probeta <span class="en">test coupon</span></dt>
+<dd>Pieza de prueba chica que se imprime antes que la definitiva — típicamente varios agujeros de distinto diámetro — para medir cuánto achica <em>tu</em> máquina con <em>tu</em> filamento. Reemplaza a las tablas de tolerancia industriales, que no aplican a FDM.</dd>
+
+<dt>Calibre <span class="en">caliper</span></dt>
+<dd>El instrumento de medición del taller: mide exteriores, interiores y profundidades con precisión de décimas. La versión digital cuesta menos que un rollo de filamento y es prerrequisito de cualquier pieza con medidas reales.</dd>
 
 </dl>
 

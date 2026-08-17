@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lección 7 — Hola, mundo físico</title>
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<p class="kicker">Lección 7 · La primera pieza propia</p>
+<h1>Hola, mundo físico</h1>
+<p class="dek">Seis lecciones usando piezas de otros. Hoy escribes la tuya — literalmente.</p>
+<p class="meta-line">
+  ~15 minutos · Viene de <a href="0006-el-compilador-de-plastico.html">Lección 6</a> · Referencia: <a href="../reference/reglas-de-diseno.html">reglas de diseño</a> · <a href="../reference/glosario.html">glosario</a>
+</p>
+
+<p>MakerWorld resuelve el 80% de los casos. El 20% restante es la razón de comprar la máquina: la pieza con <em>tus</em> medidas — el gancho para <em>ese</em> tornillo que ya está en la pared, el separador para <em>ese</em> cajón — no está en ningún repositorio, porque no existe. Hay que modelarla.</p>
+
+<p>Para tu perfil hay una vía directa: <a href="https://openscad.org/">OpenSCAD</a>, donde la forma no se dibuja — <strong>se programa</strong>. Es un lenguaje declarativo puro: describes la geometría final y el programa la construye. F5 compila una vista previa; F6 renderiza y exporta el STL que ya sabes llevar por el <a href="0006-el-compilador-de-plastico.html">flujo de la Lección 6</a>. Y es la misma vía que después permite que Claude Code escriba la geometría por ti — pero primero se aprende a mano.</p>
+
+<h2>Cuatro palabras bastan</h2>
+
+<p>Con dos primitivas y dos operaciones se modela la mayoría de las piezas funcionales: <code>cube</code>, <code>cylinder</code>, <code>translate</code> y <code>difference</code> (restar un volumen de otro: así se hacen los agujeros). La <a href="https://openscad.org/cheatsheet/">hoja de referencia oficial</a> cabe en una pantalla. Este es un gancho de pared completo:</p>
+
+<pre><code>// Gancho de pared — parámetros medidos, no adivinados
+ancho    = 20;    // mm
+alto     = 60;
+espesor  = 8;
+tornillo = 4;     // diámetro del tornillo real, medido
+holgura  = 0.8;   // ver la sección siguiente
+
+difference() {
+    union() {
+        cube([ancho, espesor, alto]);    // la placa vertical
+        cube([ancho, 25, espesor]);      // el brazo que sale
+    }
+    // el agujero del tornillo, con la holgura ya sumada
+    translate([ancho/2, espesor + 1, alto - 12])
+        rotate([90, 0, 0])
+            cylinder(h = espesor + 2, d = tornillo + holgura, $fn = 64);
+}</code></pre>
+
+<div class="sidenote"><b>$fn = 64</b> fija en cuántos segmentos rectos se aproxima cada círculo. El valor por defecto deja los cilindros visiblemente facetados; 64 es un buen estándar para agujeros.</div>
+
+<p>La línea que importa es la primera del bloque de parámetros. Si mañana el tornillo es de 5 mm, cambias <strong>un número</strong> y recompilas: eso es modelado <strong>paramétrico</strong>, y es la diferencia entre un modelo y un dibujo. El plano de la pieza vive en variables con nombre, igual que la configuración de cualquier programa.</p>
+
+<h2>El mundo físico no compila exacto</h2>
+
+<p>Aquí está el concepto de esta lección, el que arruina la primera pieza de todo el mundo: <strong>un agujero impreso sale más chico que su modelo</strong> — típicamente entre 0,2 y 0,5 mm menos. Las razones son físicas, <a href="https://www.goodprints3d.com/blogs/3d/why-do-3d-printed-holes-come-out-too-small-and-how-do-you-fix-them">no un defecto de tu máquina</a>: el cordón de plástico es redondeado y abulta hacia adentro de la curva, el plástico caliente se contrae hacia el centro al enfriarse, y el círculo se aproxima con segmentos rectos cuyas cuerdas recortan el interior.</p>
+
+<p>Y aunque el agujero saliera exacto, tampoco bastaría: dos piezas con la misma medida nominal no calzan — se necesita <strong>holgura</strong>, y cuánta depende de si la unión debe quedar apretada, deslizar o girar libre. <a href="https://3dput.com/complete-guide-to-3d-printing-tolerances-and-fit-getting-perfect-clearance-for-moving-parts/">Los valores de partida para una FDM de escritorio bien calibrada</a> (boquilla 0,4 mm, PLA/PETG):</p>
+
+<div class="table-wrap">
+<table>
+  <tr><th>Calce</th><th>Holgura</th><th>Ejemplo</th></tr>
+  <tr><td><b>Apretado</b> <span class="mono">press fit</span></td><td>−0,1 a 0,0 mm</td><td>Un imán que no debe caerse nunca.</td></tr>
+  <tr><td><b>Justo</b> <span class="mono">snug</span></td><td>0,0 a 0,1 mm</td><td>Una tapa que se saca con las uñas.</td></tr>
+  <tr><td><b>Deslizante</b> <span class="mono">sliding</span></td><td>0,2 a 0,4 mm</td><td>Un cajón, un eje que gira.</td></tr>
+  <tr><td><b>Libre</b> <span class="mono">loose</span></td><td>0,5 a 1,0 mm</td><td>Un tornillo pasante.</td></tr>
+</table>
+</div>
+
+<p>Por eso el gancho de arriba dice <code>holgura = 0.8</code>: unos 0,3 que la impresión le roba al agujero, más 0,5 de calce libre para que el tornillo pase sin pelear. <strong>Lo que sumas en el CAD = compensación + holgura funcional.</strong></p>
+
+<div class="callout myth">
+  <span class="label">El mito de la primera pieza</span>
+  <p style="margin-bottom:0">"Si el modelo tiene las medidas exactas, la pieza encaja exacto." No: un agujero modelado a 4,0 mm recibe un tornillo de 4,0 mm solo a martillazos. Y las tablas de tolerancia industriales tampoco rescatan: <a href="https://www.aon3d.com/applications/engineering-fits-how-to-design-for-3d-printed-assemblies/">ISO 286 se desarrolló para fabricación sustractiva</a> y la FDM es demasiado variable para ellas. El ajuste no se hereda del modelo ni de una norma: <strong>se diseña</strong>, y se calibra imprimiendo una probeta y midiéndola.</p>
+</div>
+
+<div class="sidenote"><b>La herramienta que falta</b>: un calibre digital (<em>caliper</em>, desde ~$10.000 CLP en cualquier ferretería). Convierte "más o menos 4" en "4,1 medido". Cómpralo antes que la impresora: todo el modelado con medidas reales depende de él.</div>
+
+<h2>Tres calces, tres holguras</h2>
+
+<p>El mismo control — el diámetro que escribes en el CAD — y tres uniones distintas. Encuentra el número que cumple ambas metas en cada una, y fíjate cómo el diámetro ganador siempre queda <em>sobre</em> la medida real de lo que entra:</p>
+
+<div class="widget slice" data-fit></div>
+
+<p>Lo que acabas de hacer — partir de la medida real, sumar compensación y holgura según el tipo de calce — es exactamente el bloque de parámetros de cualquier pieza funcional que escribas.</p>
+
+<h2>De la pantalla a la placa</h2>
+
+<p>El resto ya lo sabes de las lecciones anteriores. F6 y exportar STL; el STL entra a Bambu Studio por el <a href="0006-el-compilador-de-plastico.html">flujo de seis pasos</a>; la pieza se orienta con las <a href="0004-como-pararla-en-la-cama.html">reglas de la Lección 4</a> — para este gancho hay un detalle fino: los <a href="../reference/reglas-de-diseno.html">agujeros salen más redondos con el eje vertical</a>, así que la placa se imprime acostada de espaldas, con el agujero mirando al techo. El pipeline completo quedó así:</p>
+
+<div class="pipeline">
+  <div class="step"><span class="n">1</span><div><b>Medir</b><p>Calibre en mano: el tornillo, el espacio, la pared. Décimas, no impresiones.</p></div></div>
+  <div class="step"><span class="n">2</span><div><b>Modelar</b><p>OpenSCAD: parámetros arriba, geometría abajo, holguras ya sumadas.</p></div></div>
+  <div class="step"><span class="n">3</span><div><b>Exportar</b><p>F6 renderiza, y de ahí sale el STL — el "binario" de la forma.</p></div></div>
+  <div class="step"><span class="n">4</span><div><b>Slice</b><p>Bambu Studio: orientar, perfil, los cinco ajustes de la Lección 6.</p></div></div>
+  <div class="step"><span class="n">5</span><div><b>Imprimir y medir</b><p>La primera versión casi nunca calza perfecto: se mide el error, se corrige el parámetro, se reimprime. Es un ciclo de compilación más.</p></div></div>
+</div>
+
+<h2>Comprueba que quedó</h2>
+
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+<div class="quiz" data-quiz></div>
+
+<div class="footer">
+
+  <h3>Fuente principal para profundizar</h3>
+  <p>La <a href="https://openscad.org/cheatsheet/">OpenSCAD Cheat Sheet</a> es la referencia oficial de todo el lenguaje en una pantalla, y la <a href="https://openscad.org/documentation.html">documentación oficial</a> tiene el tutorial paso a paso. Para holguras y calces, la <a href="https://3dput.com/complete-guide-to-3d-printing-tolerances-and-fit-getting-perfect-clearance-for-moving-parts/">guía de tolerancias de 3DPut</a> es la tabla de partida; los números finos los da tu propia probeta.</p>
+
+  <h3>La tarea que no necesita impresora</h3>
+  <p><strong>OpenSCAD es gratis y corre en cualquier equipo:</strong> <a href="https://openscad.org/downloads.html">openscad.org/downloads</a>. Elige un tornillo real de tu casa, mídelo (o léele el diámetro nominal), y escribe tu propio gancho partiendo del código de arriba. Exporta el STL, pásalo por Bambu Studio y anota tiempo y gramos. Ese archivo es la primera pieza del curso que no existía antes de ti.</p>
+
+  <h3>Llévate esto</h3>
+  <p>La tabla de calces quedó en la hoja de <a href="../reference/reglas-de-diseno.html">reglas de diseño</a>, junto a los umbrales de orientación — sigue siendo una sola hoja imprimible. Los términos nuevos (<em>paramétrico, holgura, calce, probeta, calibre</em>) están en el <a href="../reference/glosario.html">glosario</a>.</p>
+
+  <h3>Para la próxima clase</h3>
+  <ul>
+    <li>Cerrar el objetivo declarado desde el día uno: <strong>Claude Code escribe el OpenSCAD</strong> — describir la pieza en español, revisar el render, exportar. Tú pones las medidas y el criterio de esta lección; el agente pone la sintaxis.</li>
+  </ul>
+
+  <div class="ask">
+    <b>Cuando hagas la tarea, vuelve con el código.</b> Pégame tu gancho —parámetros incluidos— y el tiempo y gramos que te dio el Slice. Lo revisamos juntos: holguras, orientación, y qué le cambiaría antes de gastar filamento.
+  </div>
+</div>
+
+<script src="../assets/quiz.js"></script>
+<script src="../assets/fit.js"></script>
+<script>
+  Fit.mount({
+    shrink: 0.3,
+    cases: [
+      {
+        name: "El tornillo",
+        brief: "El gancho de la lección: un tornillo de 4,0 mm debe pasar y girar libre. Calce libre: holgura de 0,5 a 1,0 mm.",
+        mate: 4.0, mateName: "tornillo",
+        min: 3.6, max: 5.8, start: 4.0,
+        band: [0.5, 1.0],
+        scad: (d) => "difference() {\n    cube([20, 8, 60]);\n    translate([10, 9, 48])\n        rotate([90, 0, 0])\n            cylinder(h = 10,\n                d = " + d + ", $fn = 64);\n}",
+        msgs: {
+          neg: "El agujero impreso quedó más chico que el tornillo: ni a martillazos. Es el mito de la primera pieza en acción — a la medida nominal hay que sumarle compensación y holgura.",
+          tight: "Ya entra, pero forzado o justo: para un tornillo pasante eso es pelear con el destornillador en cada montaje. Calce libre pide 0,5 a 1,0 mm de aire.",
+          loose: "Ahora baila: la cabeza del tornillo tiene que sujetar una pieza que ya no está centrada. Sobre 1,0 mm de holgura el gancho queda chueco al apretar.",
+          ok: "4,0 reales + ~0,3 que roba la impresión + calce libre: por eso el código de la lección dice holgura = 0.8. Ese razonamiento vale para todos tus agujeros pasantes."
+        }
+      },
+      {
+        name: "El eje",
+        brief: "Un carrete portarrollos: su eje de 8,0 mm debe girar suave dentro del buje. Calce deslizante: holgura de 0,2 a 0,4 mm.",
+        mate: 8.0, mateName: "eje",
+        min: 7.8, max: 9.4, start: 8.0,
+        band: [0.2, 0.4],
+        scad: (d) => "difference() {\n    cylinder(h = 12, d = 16,\n        $fn = 64);\n    translate([0, 0, -1])\n        cylinder(h = 14,\n            d = " + d + ", $fn = 64);\n}",
+        msgs: {
+          neg: "El eje no entra en el buje. Recuerda que el agujero impreso mide unos 0,3 mm menos que el número del CAD: parte de ahí.",
+          tight: "Entra, pero agarrado: girar cuesta y el roce come el plástico. Un calce deslizante necesita al menos 0,2 mm de aire impreso.",
+          loose: "Gira, pero con juego: el rollo cabecea y golpetea. Sobre 0,4 mm el 'deslizante' se vuelve 'suelto' — y aquí no lo quieres.",
+          ok: "Deslizante logrado: gira sin trabarse y sin cabecear. Fíjate que la banda buena es angosta — por eso las piezas móviles son las que más agradecen la probeta."
+        }
+      },
+      {
+        name: "El imán",
+        brief: "Un imán de 8,0 mm que va embutido en la pieza y no debe caerse nunca. Calce justo: holgura de 0,0 a 0,1 mm.",
+        mate: 8.0, mateName: "imán",
+        min: 7.8, max: 9.0, start: 8.6,
+        band: [0.0, 0.1],
+        scad: (d) => "difference() {\n    cube([20, 20, 5]);\n    translate([10, 10, 2])\n        cylinder(h = 4,\n            d = " + d + ", $fn = 64);\n}",
+        msgs: {
+          neg: "No entra — aunque para un imán, quedarse a −0,1 no es mala idea: entra a presión y no sale más. Aquí la meta es el calce justo: 0,0 a 0,1.",
+          tight: "",
+          loose: "Entró fácil… y se cae solo. Para piezas que deben quedarse, cada décima de más es una pieza que termina pegada con cianocrilato.",
+          ok: "Calce justo: entra empujando con el pulgar y no sale solo. Nota lo fina que es la ventana — dos décimas separan 'no entra' de 'se cae'. Esto no se adivina: se mide."
+        }
+      }
+    ]
+  });
+
+  Quiz.mount(
+    {
+      q: "Modelaste el agujero a 4,0 mm exactos para un tornillo de 4,0 mm. ¿Qué pasa al probarlo?",
+      opts: [
+        { t: "No entra: el agujero impreso mide menos que el modelo",
+          ok: true,
+          fb: "El cordón de plástico abulta hacia adentro de la curva, el material se contrae al enfriarse y los segmentos recortan el círculo: 0,2 a 0,5 mm menos. Se compensa en el CAD, y encima va la holgura del calce." },
+        { t: "Entra justo: a igual medida nominal, el calce es exacto",
+          ok: false,
+          fb: "Ni en mecanizado fino funciona así — dos piezas a la misma medida no calzan sin holgura. Y en FDM es peor: el agujero además sale achicado por el propio proceso." },
+        { t: "Entra suelto: el plástico se contrae y agranda el hueco",
+          ok: false,
+          fb: "La contracción va en el otro sentido: el plástico caliente tira hacia el centro de la curva al enfriarse, así que el agujero se cierra, no se abre." }
+      ]
+    },
+    {
+      q: "El tornillo del gancho cambia de 4 a 5 mm. ¿Qué haces en OpenSCAD?",
+      opts: [
+        { t: "Cambio el parámetro tornillo y recompilo con F6",
+          ok: true,
+          fb: "Ese es el punto del modelado paramétrico: la pieza es un programa y sus medidas son variables. Un número, una recompilación, un STL nuevo — y la holgura se recalcula sola porque es otra variable." },
+        { t: "Escalo el modelo completo un 25% desde el slicer",
+          ok: false,
+          fb: "Escalar agranda todo: el gancho entero, el espesor, el brazo. El tornillo creció, no la pieza. Escalar globalmente para arreglar un agujero es la receta clásica del desastre." },
+        { t: "Rehago el modelo desde cero con el agujero nuevo",
+          ok: false,
+          fb: "Si tuvieras que rehacer el modelo por cada medida, sería un dibujo, no un modelo. El bloque de parámetros existe exactamente para esto." }
+      ]
+    },
+    {
+      q: "¿Cómo sabes cuánta holgura necesita tu impresora, la tuya?",
+      opts: [
+        { t: "Imprimo una probeta de calces y la mido con calibre",
+          ok: true,
+          fb: "La tabla de la lección es el punto de partida; el número fino depende de tu máquina, tu filamento y tu perfil. Una probeta con varios diámetros, medida fría, calibra todo lo que imprimas después." },
+        { t: "Copio la tolerancia ISO que use la industria mecánica",
+          ok: false,
+          fb: "ISO 286 se desarrolló para fabricación sustractiva; la FDM tiene demasiada variabilidad de proceso para esas tablas. Aquí la norma se reemplaza por medición propia." },
+        { t: "Uso el valor por defecto que ya trae el slicer puesto",
+          ok: false,
+          fb: "El slicer no sabe qué unión estás diseñando: no distingue un imán embutido de un tornillo pasante. La holgura es una decisión de diseño y vive en el CAD, no en el perfil." }
+      ]
+    }
+  );
+</script>
+
+</body>
+</html>

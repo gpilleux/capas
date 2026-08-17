@@ -45,10 +45,10 @@
 </head>
 <body>
 
-<p class="kicker">Referencia · v1</p>
+<p class="kicker">Referencia · v2</p>
 <h1>Reglas de diseño</h1>
 <p class="dek">Los números y umbrales que deciden si una pieza sale bien. Pensado para imprimir en una hoja y dejarlo al lado de la máquina.</p>
-<p class="meta-line">Actualizado 2026-08-03 · Base: <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> · <a href="glosario.html">Glosario</a></p>
+<p class="meta-line">Actualizado 2026-08-16 · Base: <a href="../lessons/0004-como-pararla-en-la-cama.html">Lección 4</a> y <a href="../lessons/0007-hola-mundo-fisico.html">Lección 7</a> · <a href="glosario.html">Glosario</a></p>
 
 <div class="callout">
   <span class="label">La regla maestra</span>
@@ -101,6 +101,38 @@
   <div class="num">▬<small>caras</small></div>
   <div><b>Elige qué cara se va a ver</b>
   <p>Contra la cama sale lisa y brillante. Hacia arriba sale bien. Sobre soportes queda marcada. Nunca dejes la cara visible apoyada en soportes.</p></div>
+</div>
+
+<p class="group">Holguras y calces</p>
+
+<div class="rule">
+  <div class="num">−0,3<small>agujeros</small></div>
+  <div><b>Un agujero impreso sale más chico que su modelo</b>
+  <p>Entre 0,2 y 0,5 mm menos: el cordón abulta hacia adentro, el plástico se contrae al enfriar y los segmentos recortan el círculo. Se compensa en el CAD, no rezando. Ver <a href="../lessons/0007-hola-mundo-fisico.html">Lección 7</a>.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">0–0,1<small>justo</small></div>
+  <div><b>Calce justo: entra con el pulgar, no sale solo</b>
+  <p>Imanes embutidos, tapas que se sacan con las uñas. Con −0,1 se vuelve <em>press fit</em>: entra a presión y no sale más. La ventana es de décimas: se calibra con probeta.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">0,2–0,4<small>deslizante</small></div>
+  <div><b>Calce deslizante: piezas que se mueven entre sí</b>
+  <p>Ejes que giran, cajones, encajes que se arman y desarman. Menos de 0,2 se traba; más de 0,4 cabecea. La banda más angosta y la que más agradece medir.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">0,5–1,0<small>libre</small></div>
+  <div><b>Calce libre: pasa sin tocar</b>
+  <p>Tornillos pasantes, cables, todo lo que solo atraviesa. Aquí el error barato es quedarse corto: el aire de más casi nunca molesta.</p></div>
+</div>
+
+<div class="rule">
+  <div class="num">▤<small>probeta</small></div>
+  <div><b>La holgura fina no se adivina: se imprime una probeta</b>
+  <p>Una pieza de prueba con varios diámetros, medida fría y con calibre, calibra tu máquina, tu filamento y tu perfil de una vez. Las tablas industriales (ISO 286) no aplican a FDM.</p></div>
 </div>
 
 <p class="group">Tiempo</p>
